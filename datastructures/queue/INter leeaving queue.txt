@@ -1,0 +1,71 @@
+You are given the following class called MyQueue.
+
+class MyQueue{
+    private String[] data;
+    private int capacity, front, rear;
+
+
+    MyQueue(int capacity){
+        this.capacity = capacity;
+        data = new String[capacity];
+    }
+
+    public void enqueue(String input){
+        // enqueues the input string. Does nothing if the queue is full
+    }
+
+    public String dequeue(){
+        //dequeues from the queue. Returns null if the queue is empty
+    }
+
+    public boolean isempty(){
+        // returns true if the queue is empty. Otherwise returns false
+    }
+
+    public int length(){
+        // returns the length of the queue
+    }
+
+}
+Write a class called Solution. It should have a method called interleaveQueue that takes as parameter a MyQueue object.
+
+For this object, it should interleave the first half of the queue with the second half of the queue. The queue will always be of even length.
+
+Example Input:
+This is the even length queue
+Output:
+The even is length the queue
+
+Hint: Use a stack
+
+=========================================================================
+
+class Solution{
+
+public MyQueue interleaveQueue(MyQueue m){
+int d,e,a=m.length();
+e=a/2;
+d=a-e;
+String []b=new String[d];
+String []c=new String[e];
+for(int i=0;i<b.length;i++){
+b[i]=m.dequeue();
+}
+int j=0;
+while(!m.isEmpty()){
+c[j]=m.dequeue();
+j++;
+}
+//System.out.println(a+""+b.length+""+c.length);
+int i;
+for(i=0;i<a/2;i++){
+m.enqueue(b[i]);
+m.enqueue(c[i]);
+}
+if(a%2!=0)
+m.enqueue(b[i]);
+return m;
+}
+
+
+}

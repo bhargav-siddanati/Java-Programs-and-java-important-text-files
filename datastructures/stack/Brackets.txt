@@ -1,0 +1,103 @@
+Mr. Jack is here, and he has a classic Stack problem from you.
+
+You have 3 types of brackets: Rounded (), Square [] and Curly {}. A string is said to be balanced, if all the start and end brackets are in a correct order.
+
+For example: {Edyst}(is[cool]) here all the brackets are balanced. However, here {(Edyst})[is(cool]) the brackets are not balanced.
+
+Write a class Brackets which has as data 1 String called data. Also write a parameterized constructor for this class.
+
+It should also have the method isBalanced which returns true is data is a balanced String. Otherwise, it returns false.
+
+Only write the Brackets class. The Main class has already been written.
+
+Example Input:
+{Edyst}(is[cool])
+Output:
+true
+Example Input:
+{)(Yes!}
+false
+
+==================================================================
+
+class Brackets{
+String data;
+char a[];
+int t;
+Brackets(String data){
+this.data=data;
+a=new char[data.length()];
+t=-1;
+}
+
+public boolean isBalanced(){
+for(int i=0;i<data.length();i++){
+if(data.charAt(i)=='('||data.charAt(i)=='{'||data.charAt(i)=='['){
+push(data.charAt(i));
+//System.ou.println(push(data.charAt(i)));
+}
+else if(data.charAt(i)==')'||data.charAt(i)=='}'||data.charAt(i)==']'){
+if(data.charAt(i)==')'&&a[t]=='('){
+t--;
+}
+else if(data.charAt(i)==']'&&a[t]=='['){
+t--;
+}
+else if(data.charAt(i)=='}'&&a[t]=='{'){
+t--;
+}
+}
+
+}
+if(t==-1)
+return true;
+else 
+return false;
+
+}
+public void push(char c){
+t++;
+a[t]=c;
+}
+}
+
+
+
+/*class Brackets {
+String data;
+char db[];
+int top;
+Brackets (String data){
+this.data=data;
+db=new char [data. length()];
+top=-1;
+}
+public boolean isBalanced(){
+for(int i=0;i<data.length();i++){
+if(data.charAt(i)=='('||data.charAt(i)=='['||data.charAt(i)=='{'){
+push(data.charAt(i));
+}
+else if(data.charAt(i)==')'||data.charAt(i)==']'||data.charAt(i)=='}'){
+
+if(data.charAt(i)==')'&&db[top]=='('){
+
+top--;}
+else if(data.charAt(i)=='}'&&db[top]=='{'){
+top--;}
+else if(data.charAt(i)==']'&&db[top]=='['){
+top--;}
+}
+
+}
+if(top==-1)
+return true;
+else
+return false;
+}
+public void push (char k){
+ 
+top++;
+db[top]=k;
+}
+
+}*/

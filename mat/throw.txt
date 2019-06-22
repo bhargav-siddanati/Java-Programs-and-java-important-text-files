@@ -1,0 +1,83 @@
+The throw statement
+We have so far seen how the try, catch and finally blocks work and how we can even nest them.
+
+However, till now, all the exceptions that were ‘thrown’ at us were from the default settings of Java.
+
+With the throw statement, we will see that, even we can throw exceptions!
+
+Let’s see how this is done.
+
+Let’s recall the myStack class we have written earlier in our Data Structures topics.
+
+When defining our own stack, we are unsure of what the behaviour should be when we pop from an empty stack.
+
+Notice that Java has an exception called EmptyStackException. We shall use this when popping from our stack. Let’s see an example:
+
+class Stack{
+	int[] data;
+    int capacity; 
+	int top;   
+	
+	Stack(int capacity){
+        top = -1;
+        data = new int[capacity];
+    }
+    
+     public void push(int newData){
+        top++;
+        data[top] = newData;
+    }
+    
+    public int pop(){
+                if(top<0)
+                throw new EmptyStackException();
+                int element = data[top];
+                top--;
+                return(element);
+        }
+}
+Observe the pop method.
+
+Let us try to pop from an empty stack in our main method:
+
+public class Main{
+    public static void main(String[] args){
+        Stack myStack = new Stack(10);
+        myStack.push(5);
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
+    }
+}
+The output:
+
+5
+Exception in thread "main" java.util.EmptyStackException
+We have thrown our own exception!
+
+Notice that we used the new keyword - this is because the exception is an object, so we are creating a new exception object which is then thrown.
+
+Also, to catch these objects we can use the try and catch blocks again!
+
+public class Main{
+    public static void main(String[] args){
+        Stack myStack = new Stack(10);
+        myStack.push(5);
+        try{
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
+        }
+        catch(EmptyStackException e){
+            System.out.println("Stack is Empty!");
+        }
+    }
+The output of the above program is:
+
+5
+Stack is Empty!
+Throwing exceptions is a design choice. We had earlier tackled this situation by using an isEmpty method and checking that before popping from the stack.
+
+Now, we are not checking before popping, but warning the user after trying to pop.
+
+Different situations will require different tools.
+
+Go ahead and practice the questions, so that you can throw your doubts away!

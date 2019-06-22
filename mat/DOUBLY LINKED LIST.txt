@@ -1,0 +1,346 @@
+
+Chat (3 Online)
+Search for coders
+Edyst Team
+Aneeq Dholakia
+Dharshini Valavala
+Uma Maheswari Narava
+PENTAKOTA SRI RAM
+VARUN KUMAR KOSURU
+leela satya sai s...
+prasanna kumar
+B Raviteja
+Rajeswari punyama...
+gayathri maddukuri
+Divya Bojanapalli
+Bhanu Sri Kovvuri
+sundarapalli susm...
+sheik ahmed alisha
+Krishna Vamsi
+Meena Boddu
+kavya krishna
+Alekhya Akella
+Simon Simu
+NAGA SAI RAJ VINN...
+Pavani Pukkali
+ganeshchandra saladi
+Deepsagar Mandal
+Viswa Teja Naidu ...
+Vaishnavi Manikantan
+Anisetty Maneesh
+C.Meghana Reddy
+tanuj vds
+Bhanu Teja
+Natte Sharan
+abhishek venkata
+Chunduri Durga Bh...
+K.Venkata Srinivas
+vishwanath boga
+Mera India Mahan ...
+lokesh Kodavati
+sai Pavan Kumar
+gonela Sumanth
+Mahammad iqbal shaik
+Uday Kumar
+ram K
+Vamsi Krishna Red...
+Sriram K
+viswanadh kotha
+rahul sidda6
+nagababu bandaru
+Pranay Varma
+sruthi sarella
+nikhila lanka
+Pranathi Vaddela
+Pranay K
+Vijaya Sai Sindhu...
+Sankabathula Rahul
+Bharath Panchakarla
+Pradeep Reddy
+likhitha kandregula
+lakshmi sekharama...
+Datta Subrahmanyam
+Sai SouraBh
+Jayaram Lakshmana...
+venkatesh kalagarla
+SAI PAVAN KUMAR Y...
+saitejaswini .
+Sathya Gurram
+Srinandan Komanduri
+Tayeeb Hasan
+Sri Sai Praneetha...
+Ravi Kumar
+sandeep bammidi
+Sai charan pedduri
+S Pavan
+Sree Harsha E
+vikash varma
+Tarun Kumar
+Sunny Pathak
+Balaram Krishna
+Naveen Bonam
+PRAFULLA RAJ
+keshab manni
+Harshitha Gummalla
+Mounika Jyothsna449
+Mahesh Alladi
+Praveen Pechetty
+manikanta m
+Durga Sri
+Peddi Chakradhar
+Prasanna Periyala
+swarna kumpatla
+VASANTHAKUMAR VAV...
+rajesh konki
+sai karthik vasam...
+vikhitha akkina
+vivek velugubantla
+Dasam Sandhya Sra...
+vaishnavi chilukuri
+SURYA KUMARI GOLU...
+Sindhusha Koka
+haripriya pinninti
+Venkat Pantham
+raga harshitha
+Kakkirala Tejaswini
+Sampreethi Valluri
+priyanka 07
+Sai Niharika Konala
+Ishika Kumari
+VARA LAKSHMI KORA
+trivijna 957
+Martin Paul
+monisha nalluru
+Harshitha Harshi
+Nerella Reshma
+ramalakshmi dharmala
+ramya sri vasavi
+eswar kumar
+Sunanda Kanamatha...
+Srivatsa Lasya Pr...
+Jemima Sadhika
+VENKAKATA JANAKIR...
+Linked Lists
+2
+Rank
+All topics
+https://edyst.com?ref=anu-muralasetti55
+Estimated End Date: 31/08/19
+Weekly Tasks
+View Monthly Tasks
+2nd-April 2019
+You still have 14 hours 26 minutes left in the day. Let’s write some code :)
+Doubly Linked List
+What is a doubly linked list
+A doubly linked list maintains an extra pointer to the previous node in addition to the pointer to the next node as in singly linked list.
+
+Declaration of Node:
+
+struct node
+{
+int data;
+struct node *prev;
+struct node *next;
+}Node;
+How Doubly Linked List looks like?
+Linked List
+
+Each node has a prev and next pointer
+Prev of first node points to null.
+Next of last node points to null.
+Inserting an element in doubly linked list can have three cases:
+
+Inserting an element in the beginning of the doubly linked list.
+Inserting an element at the end of the doubly linked list.
+Insert an element at after an element in the doubly linked list.
+Inserting an element in the beginning of the doubly linked list
+The new node is added before head of the doubly linked list and the new node becomes the new head of the doubly linked list.
+
+What if the doubly linked is empty?
+The new nodes become the head.
+
+Our code logic looks like:
+
+Create a new temp node with the new element .
+Update the next pointer of temp node, to point to the current head.
+Update the head to point to the temp node.
+Example
+
+Suppose we want to insert 25 at the beginning of following doubly linked list:
+
+Linked List
+
+Create a temp node with data 25, with prev as null
+
+Linked List
+
+Update the next pointer of temp node, to point to the current head.
+
+Linked List
+
+Update the prev pointer of current head to point to temp node
+
+Linked List
+
+Update the head to point to the temp node.
+
+Linked List
+
+Final Doubly Linked List looks like:
+
+Linked List
+
+Function for Inserting an element in beginning of Linked List
+void InsertInBegging(Node** head, int data) 
+{ 
+    // Create a new temp node with data and prev as null
+    struct Node* temp_node = (struct Node*) malloc(sizeof(struct Node)); 
+    temp_node->data  = data; 
+    temp_node->prev = null;
+   
+    //Update the next pointer of temp node, to point to the current head
+    temp_node->next = (*head); 
+    
+    //Update prev pointer to current head to point to temp node
+    if ((*head)!=NULL)
+    (*head)->prev = temp_node;
+    
+    // Update the `head` to point to the `temp node`
+    (*head) = temp_node; 
+} 
+Inserting an element at the end of the linked list
+The new node is added after all the nodes of the doubly linked list.
+
+What if the doubly linked is empty?
+The new nodes become the head.
+
+Our code logic looks like:
+
+Create a new temp node with the new element, with next and prev pointer pointing to null.
+Initialize a current pointer to the head of the linked list.
+If the Linked List is empty, then make the temp node as head.
+Traverse the whole linked list using next pointer till current points to the last node.
+Update the next pointer of last node, to point to the temp node.
+Update the prev pointer of temp node to point to last node
+Example
+
+Suppose we want to insert 50 at the end of following linked list:
+
+Linked List
+
+Create a temp node with data 50, and next pointing to null.
+
+Linked List
+
+Initialize a current pointer to the head of the linked list.
+
+Traverse the whole linked list using next pointer till current points to the last node.
+
+Linked List
+
+Update the next pointer of last node, to point to the temp node.
+
+Linked List
+
+Update the prev pointer of temp node to point to last node
+
+Linked List
+
+Final Doubly Linked List looks like:
+
+Linked List
+
+Function for Inserting an element at the end of Doubly Linked List
+void InsertInEnd(Node** head, int data) 
+{ 
+    // Create a new temp node with the new element and next as null
+    struct Node* temp_node = (struct Node*) malloc(sizeof(struct Node)); 
+    temp_node->data  = data; 
+    temp_node->prev = NULL;
+    temp_node->next = NULL;
+       
+    
+    //Initialize a current pointer to the head of the linked list
+    struct Node *current = *head;
+   
+    // If the Linked List is empty, then make the temp node as head
+    if (*head == NULL) 
+    { 
+       *head = temp_node; 
+       return; 
+    }   
+       
+    // Traverse the whole linked list till current points to the last node
+    while (current->next != NULL) 
+        current = current->next; 
+   
+    // Update the next pointer of last node, to point to the temp node
+    current->next = temp_node; 
+    
+    // Update the prev pointer of temp node, to point to the last node
+    temp_node->prev = current;
+    return;      
+} 
+Inserting an element after an element in the Doubly Linked List
+The new node is added after an element of the linked list. If that element is not present in the linked list, this operation is not possible.
+
+Our code logic looks like:
+
+Create a new temp node with the new element .
+If prev node is null, return.
+Update next of temp node as next of prev_node
+Update next of prev_node to temp node.
+Update prev of temp node to prev node.
+Update prev of temp node's next to new node.
+Example
+
+Suppose we want to insert 25 after 20' in followinglinked list`:
+
+Linked List
+
+Create a temp node with data 25.
+
+Linked List
+
+If prev node is null, return.
+
+Update next of temp node as next of prev_node
+Update next of prev_node to temp node.
+Update prev of temp node to prev node.
+Update prev of temp node's next to new node.
+Final Doubly Linked List looks like:
+
+Function for Inserting an element after an element in the linked list
+void InsertAfterElement(Node** head, int data) 
+{ 
+    // Create a new temp node with the new element
+    struct Node* temp_node = (struct Node*) malloc(sizeof(struct Node)); 
+    temp_node->data  = data; 
+   
+    // If prev_node is null, return
+    if (prev_node == NULL)  
+    {  
+       return;   
+    }   
+
+    // Update next of tempo node as next of prev node
+    temp_node->next = prev_node->next; 
+    
+    // Update next of prev node to temp node
+    prev_node->next = temp_node; 
+  
+    Update prev of temp node to prev node
+    temp_node->prev = prev_node; 
+  
+    // Update prev of temp node's next to temp node
+    if (temp_node->next != NULL) 
+        temp_node->next->prev = temp_node; 
+} 
+Advantage of Doubly Linked List
+We can navigate in both the directions as compared to singly list where we can only move in one direction.
+For deletion of node in singly linked list, we need pointer to its previous node, but in a doubly linked list we can delete a node even if we don’t have pointer to previous node, since each node has a left pointer pointing to previous node and can move backward.
+Disadvantage of Doubly Linked List
+There is an extra overhead of previous pointer in each node.
+More pointer operations are involved in operations on linked list.
+Post Your Question
+?

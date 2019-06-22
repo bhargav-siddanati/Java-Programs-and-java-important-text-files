@@ -1,0 +1,72 @@
+We often find method overriding used in game design. Let’s implement it! We are designing Adventure Land.
+
+There are 5 types of players in Adventure Land, each based on the following class:
+
+class Player{
+    int speed;
+    boolean boost;
+    double health;
+    boolean shield;
+
+    public void accelerate(){
+        ...
+    }
+
+    public void damage(){
+        ...
+    }
+
+}
+The accelerate method adds to the speed of the Player, only if boost is true. The amount to add to the speed varies for the different players.
+The damage method decreases the health of the Player. If the shield is false, then it decreases 50.0. Otherwise, it varies for the different players.
+
+Refer to this table:
+
+.	accelerate (boost is true)	damage (shield is true)
+Racer	25	Same as Player
+Astronaut	Same as Player	35.0
+Mermaid	18	Same as Player
+Dolphin	10	20.0
+Lion	5	Same as Player
+Write the classes Racer, Astronaut, Mermaid, Dolphin and Lion. The Main and Player classes have already been defined.
+
+===============================================================
+
+class Racer extends Player{
+public void accelerate(){
+        if(boost)
+        speed+=25;
+    }
+}
+class Astronaut extends Player{
+public void damage(){
+        if(shield)
+        health-=35;
+        else
+        health-=50;
+    }
+}
+class Mermaid extends Player{
+public void accelerate(){
+        if(boost)
+        speed+=18;
+    }
+}
+class Dolphin extends Player{
+public void accelerate(){
+        if(boost)
+        speed+=10;
+    }
+    public void damage(){
+        if(shield)
+        health-=20;
+        else
+        health-=50;
+    }
+}
+class Lion extends Player{
+public void accelerate(){
+        if(boost)
+        speed+=5;
+    }
+}

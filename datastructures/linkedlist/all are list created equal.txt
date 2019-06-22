@@ -1,0 +1,83 @@
+You are given the following Node and MyLinkedList class:
+
+class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+
+class MyLinkedList{
+    Node first;
+
+    public void insert (Node input) {
+        //inserts Node at end of linked list
+    }
+
+    public void print(){
+        //prints the given linked list
+    }
+}
+Write a class called Solution that has a method called isEqual. This method takes as parameter 2 objects of the class MyLinkedList and returns true if the values of each node of both lists are same and are also in the same order. It returns false otherwise.
+
+Example Input:
+1 5 7 4 3
+1 5 7 4 3
+Output:
+True
+Example Input:
+3 2 7 9
+9 7 2 3
+Output:
+false
+
+Write only the Solution class. Assume that the Main and LinkedList class have already been written.
+
+=============================================================
+
+class Solution{
+public boolean isEqual(MyLinkedList obj,MyLinkedList obj2){
+int j=0,k=0;
+Node data=obj.first;
+if(data!=null){
+j=1;
+while(data.next!=null){
+data=data.next;j++;
+}
+}
+Node data2=obj2.first;
+if(data2!=null){
+k=1;
+while(data2.next!=null){
+data2=data2.next;
+k++;
+}
+}
+if(k==j){
+int c=0;
+data=obj.first;
+data2=obj2.first;
+for(int i=0;i<k;i++){
+if(data.data==data2.data){
+
+data=data.next;
+data2=data2.next;
+}else{
+c=1;break;
+}
+}
+if(c==0)
+return true;
+else
+return false;
+}
+else{
+return false;}
+}}
+
+
+
+

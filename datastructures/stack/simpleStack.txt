@@ -1,0 +1,47 @@
+Write a class called MyStack. It should have the following:
+
+a String array called data. Use this array to implement the stack
+an integer called capacity which tells us the maximum size of the data array
+Write a parameterized constructor that accepts the value for capacity.
+
+The MyStack class should have the following methods:
+
+push: accepts as parameter a String and pushes it to the stack. Returns nothing
+pop: pops and returns the topmost element from the stack. If the stack is empty, return null.
+peek: prints topmost element of the stack. If the stack is empty, print null.
+isfull: returns true if the stack is full. Otherwise returns false
+Only write the MyStack class. The Main class has already been written.
+
+=============================================
+
+class MyStack{
+String []data;
+int capacity,top;
+MyStack(int capacity){
+top=-1;
+data=new String[capacity];}
+public void push(String s){
+top++;
+data[top]=s;}
+public String pop(){
+if(top!=-1){
+String s=data[top];
+top--;
+return s;}
+else 
+return null;
+}
+public String peek(){
+if(top!=-1)
+return data[top];
+else
+return null;
+}
+public boolean isFull(){
+if(top>capacity-1)
+return true;
+else
+return false;
+}
+   
+}

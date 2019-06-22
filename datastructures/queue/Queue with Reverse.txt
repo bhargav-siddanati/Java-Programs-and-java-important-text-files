@@ -1,0 +1,52 @@
+You are given the following class called MyQueue.
+
+class MyQueue{
+    private String[] data;
+    private int capacity, front, rear;
+
+    MyQueue(int capacity){
+        this.capacity = capacity;
+        data = new String[capacity];
+    }
+
+    public void enqueue(String input){
+        // enqueues the input string. Does nothing if the queue is full
+    }
+
+    public String dequeue(){
+        //dequeues from the queue. Returns null if the queue is empty
+    }
+
+    public boolean isempty(){
+        // returns true if the queue is empty. Otherwise returns false
+    }
+
+}
+Write a class called Solution. It should have a method called reverseQueue that takes as parameter a MyQueue object and returns a MyQueue object which has the queue reversed.
+
+Only write the Solution class. The MyQueue and Main class have already been written.
+
+Note: maximum size of the queue is 1000
+
+Hint: Use a stack
+
+Example Input:
+My first string queue
+Output:
+queue string first My
+
+==============================================================
+
+class Solution{
+String t[]=new String[100];
+int front=-1,rear=-1,i=0;
+MyQueue reverseQueue(MyQueue q){
+while(!q.isEmpty()){
+t[i]=q.dequeue();
+i++;
+}
+for(int j=i-1;j>=0;j--){
+q.enqueue(t[j]);
+}return q;
+}
+}

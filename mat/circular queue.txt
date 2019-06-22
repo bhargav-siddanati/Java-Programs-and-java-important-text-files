@@ -1,0 +1,83 @@
+Circular Queues
+The problem with normal queues
+There is a simple problem with normal queues - once the rear reaches the end of the queue, our queue is declared full, even if there is space at the start of the array.
+
+For example, for a queue of size 5, let us insert 5 elements: 17, 8, 2, 9 and 43. We get the following:
+
+Full_queue
+
+Now, let us delete 2 elements:
+
+Full_queue_2
+
+Notice here that we have 2 spaces free in the array. However, is we call the isfull() method - then the response will be true.
+
+This is a problem with normal queues. To deal with this, we use circular queues.
+
+Circular Queues
+In circular queues, we allow the rear to go back to 0 once it has reached the index of capacity-1 - provided that there is some space at the start.
+
+Let’s see how the insert method works now:
+
+public void insert(int newData){
+        if(front==-1 && rear ==-1){
+            front = 0;
+            rear = 0;
+        }
+        else if(rear == capacity-1)
+        {
+            rear = 0;
+        }
+        else
+        {
+            rear++;
+        }
+        data[rear] = newData;
+    }
+Here, we added the extra condition of rear == capacity-1. Now, whenever the rear reached the end of the array, it wraps back to 0
+
+Caution! We must make sure that our isFull() method is also modified. We now have 2 conditions for the queue to be full:
+
+rear is capacity-1 and front is 0
+rear is 1 less than front
+The second condition is for those cases when rear has wrapped around and has still used up all the space in the array.
+
+Like earlier, we can use the isFull() method either in the main method or in the insert method.
+
+Our isFull() method is:
+
+public boolean isFull(){
+        if(front==0 && rear== (capacity-1))
+            return true;
+        else if(rear == front-1)
+            return true;
+        else
+            return false;
+    }
+Deleting in Circular Queues
+There are 1 extra consideration we have to keep in mind when deleting from a circular queue.
+
+Let’s say that this is our array, after some insertions and deletions:
+
+circular_queue_1
+
+Now, when we want to delete, the front has to wrap back to 0.
+
+public int delete(){
+        int deletedElement = data[front];
+        if(front == capacity-1)
+            front = 0;
+        else
+            front++;
+            
+        if(front == rear+1)
+        {
+            front = -1; rear = -1;
+        }
+        return deletedElement;
+    }
+Here, we check for front being at the end of the array. If it is, then we wrap it back to 0.
+
+We also check if the queue has become empty - in that case we again make both rear and front as -1, thus resetting the array.
+
+Go ahead and attempt some fun and interesting questions on Circular Queues

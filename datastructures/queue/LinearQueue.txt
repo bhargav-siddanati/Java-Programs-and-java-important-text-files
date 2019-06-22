@@ -1,0 +1,64 @@
+Write a class called MyQueue. It should have the following:
+
+a String array called data. Use this array to implement the queue
+an integer called capacity which tells us the maximum size of the queue array
+Write a parameterized constructor that accepts the value for capacity.
+
+The MyQueue class should have the following methods:
+
+enqueue: accepts as parameter a String and inserts it into the queue. Returns nothing. Don’t insert if the queue is already full
+dequeue: deletes and returns the topmost element from the queue. If the queue is empty, return null.
+peek: returns element at the front of the queue. If the queue is empty, return null.
+empty(): returns true if the queue is empty. Otherwise returns false
+Only write the Queue class. The Main class has already been written.
+
+===================================================================
+
+class MyQueue{
+String data[];
+int f,r,capacity;
+
+MyQueue(int capacity){
+this.capacity=capacity;
+f=-1;r=-1;
+data=new String[capacity];
+}
+
+public void enqueue(String s){
+if(r<capacity-1){
+if(f==-1&&r==-1){
+f=0;r=0;}
+else{r++;}
+data[r]=s;
+}
+}
+
+public String dequeue(){
+if(f!=-1){
+String s=data[f];
+f++;
+if(f==r+1){
+f=-1;
+r=-1;
+}
+return s;
+}
+else
+return null;
+}
+
+public String peek(){
+if(isEmpty())
+return null;
+else
+return (data[f]);
+}
+
+public boolean isEmpty(){
+if(f==-1)
+return true;
+else 
+return false;
+}
+
+}

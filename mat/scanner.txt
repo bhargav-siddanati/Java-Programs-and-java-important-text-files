@@ -1,0 +1,25 @@
+What is Scanner?
+We have earlier used Scanner to take inputs from the console. However, now that we have seen so many new ways of taking input, where does Scanner fit?
+
+Scanner is not a stream. It’s mainly used with a stream to better break down the inputs into different components.
+
+In the previous examples, we have seen how we used the readLine method to read lines from the connected streams. Our readers are limited in this sense - what if we want to take only the integer and then the string, but not the entire line? or if we had some other way of breaking up the inputs?
+
+This is when we use Scanner.
+
+We have already seen how to use Scanner with the simple System.in stream. This is how we would we use it with the BufferedReader:
+
+Scanner s = null;
+s = new Scanner(new BufferedReader(new FileReader("C:\\Users\\Edyst\\Desktop\\com\\company\\poem.txt")));
+And then, we may use the different methods of the Scanner class to read from this file.
+
+Method	Description
+next()	it returns the next token from the scanner as a String type.
+nextLine()	it moves the scanner position to the next line and returns the value as a string.
+nextByte()	it scans the next token and returns a byte
+nextShort()	it scans the next token and returns a short value
+nextInt()	it scans the next token and returns an integer value
+nextLong()	it scans the next token and returns a long value
+nextFloat()	it scans the next token and returns a float value
+nextDouble()	it scans the next token and returns a double value
+Now try out some I/O problems using the Scanner class yourself!

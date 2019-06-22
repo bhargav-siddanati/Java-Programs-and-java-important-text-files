@@ -1,0 +1,178 @@
+Exception Handling
+Having gone through so many programming questions in Java, you must have come across different exceptions like the ArithmeticException, ArrayIndexOutOfBoundException and NullPointerException. There are many more!
+
+What are Exceptions?
+
+An exception is an event, which occurs during the execution of a program, that disrupts the normal flow of the program’s instructions.
+
+This is different from a compilation error. Exceptions occur at run-time, but compilation errors occur during the running of the program.
+
+For example, take the following code:
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        a = 5;
+        b = scan.nextInt();
+        System.out.println(a + " divided by " + b + " is "  + (a/b));
+    }
+}
+In the above code, we are taking the value of b as input from the user and displaying the result of 5/b.
+
+Now, let’s replace the statement a=5; to a=5, i.e, we are not putting any semi-colon.
+
+When we execute it, we get the following:
+
+Main.java:7: error: ';' expected
+        a = 5
+             ^
+1 error
+This is an error. This happened at the time of compilation - even before the program started to run.
+
+Exceptions are not like this. Exceptions occur during run-time. Let’s go back to our original code and give the input of b as 5:
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        a = 5;
+        b = scan.nextInt();
+        System.out.println(a + " divided by " + b + " is "  + (a/b));
+    }
+}
+This is the output:
+
+5 divided by 5 is 1
+However, when we give the input for b as 0, we get the following:
+
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+	at Main.main(Main.java:9)
+Which means that there is some problem with the program even though it has compiled.
+Specifically here, we have the problem of division by 0. It causes the disruption of the normal flow of the program’s instructions.
+
+Why should we handle exceptions?
+When we write programs in the real world, we have to always consider the end user. And users are prone to mistakes - like entering a 0 for division, or asking for the 50th index of an array of size 20. Our program should be strong enough to continue working, even when such exceptions come. For this reason, we use exception handling.
+
+The try-catch block
+The first step to handle an exception is to surround the part which can throw an exception by a try block, followed by a catch block.
+
+Let’s first enlose our above code in a try block:
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        try{
+            a = 5; b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+        }
+    }
+}
+When we put a try block, we must also have a catch block. Otherwise the program will not compile.
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        try{
+            a = 5; b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+        }
+        catch (ArithmeticException e){
+            System.out.println("Please enter a non-zero number!");
+        }
+    }
+}
+The catch block excepts as argument an object of some Exception class. We’ll have a look at a list of all the Exception classes soon.
+
+Here, we are handling any Exception that is of the class AirthmeticException.
+
+We get the following output:
+
+Please enter a non-zero number!
+Great! We have handled an Exception!
+
+However, what happens if we get another type of exception? Say, we give b a non-integer value. Can our above code handle it?
+
+This is the output we get if we try to give b a value of hello:
+
+Exception in thread "main" java.util.InputMismatchException
+	at java.util.Scanner.throwFor(Scanner.java:864)
+	at java.util.Scanner.next(Scanner.java:1485)
+	at java.util.Scanner.nextInt(Scanner.java:2117)
+	at java.util.Scanner.nextInt(Scanner.java:2076)
+	at Main.main(Main.java:8)
+Here, our Scanner is throwing an exception. Since it is not an ArithmeticException, we are not catching it. This means that we should have the ability to catch more than one exception.
+
+How do we do this?
+
+There are 2 popular ways: Multiple Catch Blocks and Single Catch Block.
+
+Multiple Catch Blocks
+Here, we give more than one catch block after our try block.
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        try{
+            a = 5; b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+        }
+        catch (ArithmeticException e){
+            System.out.println("Please enter a non-zero number!");
+        }
+        catch(InputMismatchException e){
+            System.out.println("Please enter an Integer value!");
+        }
+    }
+}
+Now, if we give input as hello, we get the output:
+
+Please enter an Integer value!
+Notice that we also had to import the InputMismatchException class.
+
+Single Catch Block
+To have a single catch block, we have 2 ways to do it. The first one is where we mention all of the Exceptions and separate them using a vertical bar |.
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        try{
+            a = 5; b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+        }
+        catch (ArithmeticException|InputMismatchException e){
+            System.out.println("Incorrect Input!");
+        }
+    }
+}
+The other way to do it is to write a catch block with the Exception class - since it is the parent class for all exceptions.
+
+catch (Exception e){
+            System.out.println("Incorrect Input!");
+        }
+Both of the above codes give the following output:
+
+Incorrect Input!
+What about the Exception Object?
+In all of the above examples, you must have noticed the Exception object e which we use as parameter. This is not a useless object! The object has some useful methods which we can definitely use. Check the further reading materials for that!
+
+Make sure you try out the examples to catch this concept!
+

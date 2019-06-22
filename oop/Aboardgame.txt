@@ -1,0 +1,57 @@
+We are going to define a simple game. First, we want to create a game with a board, and a player at some starting position
+
+Write a class called Game. It should have the following data:
+
+a 2D integer array called board
+an integer called pos_row to store the row of the player’s position
+an integer called pos_col to store the column of the player’s position
+Also, it should have a constructor that takes as parameter 3 integers
+
+First, the size of the board
+Second, the row of the player’s starting position
+Third, the column of the player’s starting position
+Finally, you should also define a method called draw: it prints the board but does not return anything.
+
+As per the parameters, you have to draw the board. The board is full of zeros, except for the position of the player. The position of the player is marked by 1.
+
+Only write the Game class, assume the Main class has already been written.
+
+Example Input:
+3 2 0
+Output:
+0 0 0
+0 0 0
+1 0 0
+Example Input:
+5 2 2
+Output:
+0 0 0 0 0
+0 0 0 0 0
+0 0 1 0 0
+0 0 0 0 0
+0 0 0 0 0
+
+====================================================================
+
+class Game{
+
+int pos_row;
+int pos_col;
+int[][] board;
+Game(int a,int b,int c){
+board=new int[a][a];
+this.pos_row=b;
+this.pos_col=c;
+}
+public void draw(){
+for(int i=0;i<board.length;i++){
+for(int j=0;j<board[0].length;j++){
+if(i==pos_row&&j==pos_col){
+System.out.print(1+" ");}
+else
+System.out.print(0+" ");
+}System.out.println();
+}
+
+}
+}

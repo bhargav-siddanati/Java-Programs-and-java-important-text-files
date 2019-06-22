@@ -1,0 +1,82 @@
+You are given the following Book class:
+
+class Book{
+    int sales;
+    String name;
+    boolean is_published;
+
+    public Book(int sales, String name, boolean is_published) {
+        this.sales = sales;
+        this.name = name;
+        this.is_published = is_published;
+    }
+}
+Write a class called Solution. It has 3 methods:
+
+insert - accepts as parameter a Book object and stores it
+printByName - prints all the books in alphabetical order of name
+printByStatus - prints all the books which have been published already (is_published is true), in decreasing order of sales. Then prints all the books which have not been published in alphabetical order of name.
+Only write the Solution class. All other classes have been written.
+
+Print in the following format:
+
+Name Sales is_published
+
+===================================================================
+
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Comparator;
+class Solution{
+LinkedList<Book>li=new LinkedList<Book>();
+public void insert(Book b){
+li.add(b);
+}
+public void printByName(){
+Collections.sort(li,new ByName());
+for(Book b:li){
+System.out.println(b.name+" "+b.sales+" "+b.is_published);
+}
+}
+public void printByStatus(){
+Collections.sort(li,new ByStatus());
+
+for(Book b:li){
+if(b.is_published==true)
+System.out.println(b.name+" "+b.sales+" "+b.is_published);
+}
+for(Book b:li){
+if(b.is_published==false)
+System.out.println(b.name+" "+b.sales+" "+b.is_published);
+}
+
+
+}
+}
+
+class ByName implements Comparator<Book>{
+public int compare(Book a,Book b ){
+return (a.name.compareTo(b.name));
+}}
+class ByStatus implements Comparator<Book>{
+public int compare(Book a,Book b ){
+if(a.is_published==true ){
+if(a.sales>b.sales)
+return 0;
+if(a.sales<b.sales)
+return -1;
+
+return 0;
+}
+
+else{
+/*int l=a.name.compareTo(b.name);
+if(l>0)
+return 0;
+if(l<0)
+return 1 ;
+return 0;*/
+return (a.name.compareTo(b.name));
+}
+}
+}

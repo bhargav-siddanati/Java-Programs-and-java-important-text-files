@@ -1,0 +1,32 @@
+Write a class called Helper. It should have an integer array called data, and also a parameterized constructor for data.
+
+In this class, write a method called nextLargerElement which accepts as parameter an integer i. This method returns the next larger element for the element at index i. The next larger element is the first element to the right of i that is greater than data[i]. If there is no such element then return -1.
+
+Example: [13 18 5 9 7 12]. The next larger element for 13 is 18, for 18 is -1, for 5 is 12 etc.
+
+=====================================================================
+
+class Helper{
+int data[];
+
+Helper(int d[]){
+data=new int[d.length];
+data=d;}
+
+public int nextLargerElement(int a){
+int b=-1;
+   for(int i=a+1;i<data.length;i++){
+   if((data[i]>data[a])){
+   b=data[i];
+   break;
+   }
+   
+
+   }
+   if(b>=0)
+   return (b);
+   else
+   return -1;
+}
+
+}

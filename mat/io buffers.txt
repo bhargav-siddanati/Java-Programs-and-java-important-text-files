@@ -1,0 +1,195 @@
+What are Streams?
+As we know, programs are meant to solve real world problems. This means that a program must have some aspect that requires input from the user and some location where the output has to be stored.
+
+Input can be taken from many locations: keyboards, mouses, webcams, scanners etc. And the output too can be delivered to many locations: printers, screen, disks etc.
+
+Even though there are such large number of variety of input and output, the way in which each works is roughly the same.
+
+Data is transferred in the form of Streams. A stream is a sequence of data. A program uses an input stream to read data from a source, one item at a time:
+
+Input-stream
+
+A program uses an output stream to write data to a destination, one item at time:
+
+Output-stream
+
+In Java, there are mainly 2 types of streams: Byte Streams and Character Streams.
+
+Byte Streams
+In Byte Streams, we collect the data in the form of 8-bit bytes. There are 2 main classes for these: the InputStream class for inputs and OutputStream class for outputs.
+
+It is safe to say that whenever you see a class which has InputStream or OutputStream in it’s name then it is a byte stream.
+
+Since byte streams consists of raw bytes, we don’t use them much. It is important that we are aware of byte streams, but we will not be using them.
+
+Character Streams
+Character Streams are built on top of byte streams but they convert the bytes to character values so that it is human-readable. For this reason, we prefer to use Character Streams over Byte Streams.
+
+All the Character Stream classes come from the classes Reader for input, and Writer for output.
+
+
+Buffered Streams
+So far, we have understood how Java works with different forms of input and output: it uses Streams.
+
+Further, there are 2 types of streams - Byte Streams and Character Streams.
+
+Before we actually start programming, there is one more thing we need to learn about: Buffered Streams.
+
+In Byte and Character Streams, we are continuously reading from the source. That means, for every new input or output, we are asking our Operating System to access the disk. This is not desirable.
+
+One way of improving it is by using buffers. In buffers, we read the entire data at once and load it into the buffer. Then our stream can keep accessing the buffer, rather than having to access the source again and again.
+
+The same applies with outputs: we write the output to a buffer which then writes it to the destination only when the buffer is full or the program has ended.
+
+We use the BufferedInputStream & BufferedOutputStream classes for to create buffered byte streams and BufferedReader & BufferedWriter to create buffered character streams.
+
+Now, let’s write our first program using the buffers. We will write a program to read from a file and print it out in our console.
+
+The file to be read has the following poem:
+
+I shall be telling this with a sigh
+Somewhere ages and ages hence:
+Two roads diverged in a wood, and I-
+I took the one less traveled by,
+And that has made all the difference.
+Let’s look at how we shall read from this file.
+
+First, we have our Main class and the main method:
+
+public class Main{
+    public static void main(String[] args) {
+      
+}
+We will define a new BufferedReader, and also import the class needed:
+
+import java.io.BufferedReader;
+
+public class Main{
+    public static void main(String[] args) {
+        BufferedReader ip = null;
+    }
+}
+Now, we need a character stream to read from our file. We will use the FileReader class - it is a character stream used to work with files.
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class Main{
+    public static void main(String[] args) {
+        BufferedReader ip =null;
+        
+        try {
+            ip = new BufferedReader(new FileReader("C:\\Users\\Edyst\\Desktop\\com\\company\\poem.txt"));
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+}
+Here, we have initialized our ip to be a BufferedReader of FileReader. Further, we have asked it to read from a specific file - where our poem is stored.
+
+Notice that we surrounded it by tryand catch block - this is because taking inputs can have many exceptions and we want to guard against that.
+
+Now, let’s read the poem, line-by-line.
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class Main{
+    public static void main(String[] args) {
+        BufferedReader ip = null;
+
+        try {
+            ip = new BufferedReader(new FileReader("C:\\Users\\Edyst\\Desktop\\com\\company\\poem.txt"));
+            String line = ip.readLine();
+            while(line!=null){
+                System.out.println(line);
+                line = ip.readLine();
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+    }
+}
+We are reading a line, storing it in a String called line, printing it on our console, and repeating the process till we don’t have any other lines.
+
+What’s the output?
+
+I shall be telling this with a sigh
+Somewhere ages and ages hence:
+Two roads diverged in a wood, and I-
+I took the one less traveled by,
+And that has made all the difference.
+Wait! this is not the end. We must always close our streams when we are finished with them!
+
+What does this mean? The computer has a limited number of resources to read and write to files. So when you open a stream to a file, it gives you one of those resources. However, once you are done with it, it is your responsibility to close the stream so that the computer can have the option of giving the resource to someone else.
+
+In small programs, this is not a problem. However, in large programs, this is the difference between a bad programmer and a good programmer. So be a good programmer, and close your streams!
+
+How will we do this? We shall use the finally block - no matter what exceptions we get, we want to make sure that we close our streams:
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main{
+    public static void main(String[] args) throws IOException {
+        BufferedReader ip = null;
+
+        try {
+            ip = new BufferedReader(new FileReader("C:\\Users\\Edyst\\Desktop\\com\\company\\poem.txt"));
+            String line = ip.readLine();
+            while(line!=null){
+                System.out.println(line);
+                line = ip.readLine();
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        finally{
+            if(ip!=null)
+                ip.close();
+        }
+    }
+}
+In our finally block, we have closed the ip stream. However, you also need to change your main method definition a little bit by adding throws IOException.
+
+Now, let’s modify our program such that the spaces in our poem are now replaced by hyphens.
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main{
+    public static void main(String[] args) throws IOException {
+        BufferedReader ip = null;
+
+        try {
+            ip = new BufferedReader(new FileReader("C:\\Users\\Edyst\\Desktop\\com\\company\\poem.txt"));
+            String line = ip.readLine();
+            while(line!=null){
+                line  = line.replace(' ','-');
+                System.out.println(line);
+                line = ip.readLine();
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        finally{
+            if(ip!=null)
+                ip.close();
+        }
+    }
+}
+We have used the String method .replace to replace all the characters with a - character.
+
+And the output:
+
+I-shall-be-telling-this-with-a-sigh
+Somewhere-ages-and-ages-hence:
+Two-roads-diverged-in-a-wood,-and-I-
+I-took-the-one-less-traveled-by,
+And-that-has-made-all-the-difference.
+Amazing! Try out some problems to understand how you can use different classes to write to files also.
+
+All the best!

@@ -1,0 +1,48 @@
+Write a class called Solution that has an ArrayList of Integer type called myList. Your Solution should have the following methods:
+
+insert() - accepts as parameter a Integer and inserts it at the end of myList
+deletePrime() - deletes all the prime numbers from myList
+print() - prints the elements of myList in a single line
+Write only the Solution class. The main class has been written.
+
+==================================================================
+
+import java.util.ArrayList;
+class Solution{
+public static boolean check(int a)
+{if(a<2)
+return false;
+for(int i=2;i*i<=a;i++)
+{
+if(a%i==0)
+return false;
+}
+return true;
+}
+ArrayList<Integer> myList=new ArrayList<Integer>();
+
+public void insert(int a){
+myList.add(a);
+}
+public void deletePrime(){
+int i=0,j=0;
+while(j<myList.size())
+{
+
+int a=myList.get(j);
+if(check(a)==true)
+{
+myList.remove(j);
+}
+else{
+j++;
+}
+}
+}
+
+public void print(){
+for(int s:myList){
+System.out.print(s+" ");
+}System.out.println();
+}
+}

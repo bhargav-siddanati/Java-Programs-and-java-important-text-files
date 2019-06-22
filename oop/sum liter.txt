@@ -1,0 +1,29 @@
+Write a class Word that has a String type called data. The class should have a parameterized constructor that accepts the value for data.
+
+Write a method literalSum that sums up all of the digits that appear in data. You have to return the sum.
+
+Example Input:
+One1plus2minus3multipliedby4
+Output:
+10
+Example Input:
+Strings are fun!
+Output:
+0
+
+============================================
+
+class Word{
+String data;
+Word(String data){
+this.data=data;}
+public int literalSum(){
+int c=0;
+for(int i=0;i<data.length();i++){
+if(Character.isDigit(data.charAt(i))){
+c+=Character.getNumericValue(data.charAt(i));
+}
+}
+return c;
+}
+}

@@ -1,0 +1,92 @@
+Queues
+Queues are data structures that follow the First In First Out Policy or FIFO.
+
+In a queue, we insert from one end - called the rear. And we delete from another end - called the front.
+
+Let’s say we have a queue of size 5. If we insert the elements 17, 8 and 2.
+
+Queue_Insert
+
+And then, if we delete one element, we get:
+
+Queue_Remove
+
+Let’s see how we can write a class for Queue.
+
+Our own Queue class
+class Queue{
+    int[] data;
+    int front;
+    int rear;
+    int capacity;
+    
+    Queue(int capacity){
+        front = -1;
+        rear = -1;
+        data = new int[capacity];
+    }
+
+}
+Our Queue class has the following things:
+
+An integer array called data. This will store our queue. Note that we have used integer here but it could have been any other type as well
+The front and rear counters to keep track of deletion and insertions respectively
+And capacity - it tells us the maximum number of elements possible in the queue
+We have also defined a constructor that takes as parameter the capacity of the queue and creates a new array of that size. It initializes front and rear to -1 because, at the start, there are no elements.
+
+Now, let us define the insert method:
+
+public void insert(int newData){
+        if(front==-1 && rear ==-1){
+            front = 0;
+            rear = 0;
+        }
+        else
+        {
+            rear++;
+        }
+        data[rear] = newData;
+    }
+Here, we accept the element to be inserted as a paramaeter. If the queue is empty, as it is initially, then we make both rear and front to 0. Otherwise, we just increase rear. Remember, insertion happens from the rear!
+
+Now, to delete, we shall write the following method in our class:
+
+public int delete(){
+        int deletedElement = data[front];
+        front++;
+        if(front == rear+1)
+        {
+            front = -1; rear = -1;
+        }
+        return deletedElement;
+    }
+We increase front and also return the value of the deleted element.
+
+Also, we are checking if the queue has become empty - in that case we make both front and rear to -1 and reset the queue.
+
+Naturally, we get the same problem here that we got in Stacks - what about deleting from an empty queue? Or inserting in a full queue?
+
+We can again define the isEmpty() and isFull() methods. And then, we can call these in the main method before we call the insert or delete elements.
+
+public boolean isFull(){
+    if(rear== (capacity-1))
+        return true;
+    else
+        return false;
+}
+
+public boolean isEmpty(){
+    if(front == rear)
+        return true;
+    else 
+        return false;
+}
+Peek() in Queues
+In Queues, the peek method should tell us which element is at the front of the queue. Think of it like this: if there’s a queue for buying a movie ticket, the peek method should tell us whose turn it is next.
+
+This is how we would write it:
+
+public int peek(){
+        return(data[front]);
+    }
+Again, here too we should ensure that the queue is not empty when we are calling the method. Otherwise, we can get an Array Out of Bounds Exception.

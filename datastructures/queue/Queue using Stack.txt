@@ -1,0 +1,86 @@
+You are given the following class called MyStack
+
+class MyStack{
+    private int[] data;
+    private int capacity, top;
+
+    MyStack(int capacity){
+        this.capacity = capacity;
+        data = new int[capacity];
+        top = -1;
+    }
+
+    public void push(int input){
+        // pushes input on top of stack. Does not do anything if stack is full
+    }
+
+    public int pop(){
+        // returns and pops the topmost element from the stack. Returns -1 if the stack is empty
+    }
+
+    public boolean isempty(){
+        // returns true if the stack is empty. Otherwise, returns false
+    }
+
+}
+Write a class called MyQueue that uses MyStack objects to implement a queue. Your MyQueue class should have the following methods:
+
+print(): prints the contents of the queue from front to rear in a single line
+enqueue: accepts an integer and inserts it into the queue
+dequeue: returns and removes the element at the front of the queue
+It should also have a parameterized constructor to get the value of capacity of the queue.
+
+================================================================
+
+class MyQueue{
+int data[];
+int f,r,capacity;
+
+MyQueue(int capacity){
+this.capacity=capacity;
+f=-1;r=-1;
+data=new int[capacity];
+}
+
+public void enqueue(int s){
+if(r<capacity-1){
+if(f==-1&&r==-1){
+f=0;r=0;}
+else{r++;}
+data[r]=s;
+}
+}
+
+public int dequeue(){
+if(f!=-1){
+int s=data[f];
+f++;
+if(f==r+1){
+f=-1;
+r=-1;
+}
+return s;
+}
+else
+return -1;
+}
+
+public int peek(){
+if(isEmpty())
+return -1;
+else
+return (data[f]);
+}
+
+public boolean isEmpty(){
+if(f==-1)
+return true;
+else 
+return false;
+}
+public void print(){
+for(int i=f;i<=r;i++){
+System.out.print(data[i]+" ");
+}System.out.println();
+}
+}

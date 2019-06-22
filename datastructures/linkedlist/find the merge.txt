@@ -1,0 +1,67 @@
+You are given the following Node and MyLinkedList class:
+
+class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+
+class MyLinkedList{
+    Node first;
+
+    public void insert (Node input) {
+        //inserts Node at end of linked list
+    }
+
+    public void print(){
+        //prints the given linked list
+    }
+}
+Write a class called Solution that has a method called findMerge. This method takes as parameter 2 objects of the class MyLinkedList and returns an integer which tells us the merging point of the 2 lists.
+
+For example:
+
+    2-3-5
+         \
+          7-25-13
+         /
+1-9-1-6-2
+The point where they merge is 7. If there is no merging point then return -42.
+
+Write only the Solution class. Assume that the Main and MyLinkedList class have already been written.
+
+=======================================================
+
+class Solution{
+public int findMerge(MyLinkedList A,MyLinkedList B)
+{
+Node one=A.first;
+Node two=B.first;
+Node three=A.first;
+Node four=B.first;
+while(one!=null&&two!=null)
+{one=one.next;two=two.next;}
+while(one!=null||two!=null)
+{
+if(one!=null)
+{one=one.next;three=three.next;}
+else{two=two.next;four=four.next;}
+}
+while(three!=null)
+{
+if(four==three)
+return three.data;
+four=four.next;
+three=three.next;
+}
+return -42;
+}
+}
+
+
+
+

@@ -1,0 +1,44 @@
+Strings
+What is the meaning of immutable in terms of String?
+The simple meaning of immutable is unmodifiable or unchangeable. Once string object has been created, its value can’t be changed. example, if we create a String name = “Edyst”then this Edyst literal is immutable. If we modify if it by saying name = name + “interview”then a new object is created - the previous object is still there. Java uses this concept to make save memory. If more than one reference has the same value, then we don’t need to create multiple copies of it. This makes Java memory efficient.
+
+What happens when we declare a new string? What is the string pool?
+Let’s say we create a new string
+
+String name = “Edyst”;
+When we create another string
+
+String another_name = “Edyst”;
+It will not create a new instance of “Edyst”. Instead, it will just point to the existing version of “Edyst”.
+
+Here, the existing version exists in the String pool. If we want to create a new version of “Edyst” outside the string pool, then we use the new keyword.
+
+String name = new String(“Edyst”);
+String another_name = new String(“Edyst”);
+What is the difference between String, Stringbuilder and Stringbuffer?
+
+String is an immutable object, it can’t be changed. We use String for an object if we know it’s not going to change during the program
+
+Stringbuilder is mutable which means it can be changed. We use Stringbuilder when we have to do a lot of manipulations on Strings
+
+Stringbuffer is similar to Stringbuilder, but it is synchronized, which means it can be used across multiple threads. When we need thread-safety, we use Stringbuffer
+
+====================================================================================================================================================================================
+
+Exception Handling
+What is an exception? What is Exception Handling?
+Exceptions are events that occur during the execution of programs that disrupt the normal flow of instructions. For example, during run time we might access an array that is out of bounds, or we might divide a number by zero.Exception handling is the mechanism to handle these runtime errors. Java does this by throwing an exception object. We can use try-catch blocks to catch these exceptions.
+
+Explain the try catch finally blocks
+We use the try-catch blocks to catch exceptions in our code. Whenever some code throws an exception in our try block, it can be caught in the catch block. Depending on the type of exception, we can create different catch blocks, each doing something different based on the type of exception.The finally block is used with try-catch blocks. It is executed always - even if no exception occurs.
+
+What is exception propagation? What is difference between Checked Exception and Unchecked Exception?
+When an exception is thrown, it will keep propagating till it finds something that can handle it. Generally, this means it keeps going back to the method what had previously called it. These list of methods that it goes through is called the call stack and this way of searching for the right code to handle it is called Exception Propagation
+
+Checked Exception
+
+Checked Exceptions are those that are checked at Runtime. There are errors, for example, FileNotFoundException if we don’t check at the time of writing the code, the compiler will tell us to do so. All Exceptions that are not RuntimeExceptions are checked exception and we either need to specify in our code by using the throws keyword or we need to use try-catch blocks.
+
+Unchecked Exception
+
+The classes that extend RuntimeException are known as unchecked exceptions e.g. ArithmeticException, NullPointerException etc. Unchecked exceptions are not checked at compile-time.

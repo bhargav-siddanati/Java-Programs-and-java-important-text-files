@@ -1,0 +1,53 @@
+You are given the following Node class:
+
+class Node{
+    String data;
+    Node next;
+
+    Node(String data){
+        this.data = data;
+        next = null;
+    }
+}
+Write a class called MyLinkedList that implements a linked list using the objects of the class Node.
+
+It should have the following methods:
+
+insert: takes as parameter an integer and a string. The integer denotes the position where the new node has to be inserted and the string gives us the value for the new node
+print: prints all the elements of the linked list on a single line
+
+=====================================================================
+
+class MyLinkedList{
+    Node first;
+    MyLinkedList(){
+        first=null;
+    }
+    public void insert(int a,String b){
+        Node n=new Node(b);
+        if(first==null)
+          first=n;
+        else{
+          if(a==0){
+           n.next=first;
+           first=n;
+           }
+           else{
+            Node t=first;
+            for(int i=0;i<a-1;i++){
+            t=t.next;
+            }
+            n.next=t.next;
+            t.next=n;
+           }
+        }
+    }
+    public void print(){
+     Node t=first;
+     while(t.next!=null){
+      System.out.print(t.data+" ");
+      t=t.next;
+     }System.out.print(t.data);
+     System.out.println();
+    }
+}

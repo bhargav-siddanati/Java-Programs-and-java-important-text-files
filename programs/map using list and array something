@@ -1,0 +1,89 @@
+import java.util.*;
+class Node{
+    String d;
+    Node next;
+    Node(String v){
+        d=v;
+        next=null;
+    }
+}
+
+class Ins{
+ArrayList<Integer> li= new  ArrayList<Integer>();
+    Node first;
+    Ins(){
+        first=null;
+    }
+    public void ins(int a,String d){
+        li.add(a);
+       Node n=new Node(d);
+        if(first==null){
+            first=n;
+        }
+        else{
+            
+            if(a==0){
+                n.next=first.next;
+                first=n;
+            }
+            
+            else{
+                
+            Node k=first;
+            for(int x=0;x<a-1;x++){
+                k=k.next;
+            }
+            k.next=n;
+        
+        }
+    }
+    } 
+
+    public void del(int a){
+        Node n=first;
+        if(a==0){
+            first=first.next;
+        }
+        else{
+            if(li.contains(a)){
+            Node k=first;
+            Node p;
+            for(int x=0;x<a-1;x++){
+                k=k.next;
+            }
+            p=k;
+            p.next=k.next.next;
+        }
+        else{
+            System.out.println("not existed");
+        }
+        }
+    }
+    public void pr(){
+        Node t=first;
+        while(t.next!=null){
+            System.out.print(t.d+" ");
+            t=t.next;
+        }
+        System.out.print(t.d);
+        System.out.println();
+    }
+}
+
+public class Insertion{
+    public static void main(String[]args){
+        Ins i=new Ins();
+        i.ins(0,"hello");
+        i.pr();
+        i.ins(1,"guys");
+        i.ins(2,"how");
+        i.pr();
+        i.ins(3,"are");
+        i.pr();
+        i.del(3);
+        i.pr();
+        i.del(2);
+        i.del(1);
+        i.pr();
+    }
+}

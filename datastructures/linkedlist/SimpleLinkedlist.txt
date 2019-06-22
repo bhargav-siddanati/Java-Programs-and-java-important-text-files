@@ -1,0 +1,82 @@
+You are given the following Node class:
+
+class Node{
+    String data;
+    Node next;
+
+    Node(String data){
+        this.data = data;
+        next = null;
+    }
+}
+Write a class called MyLinkedList that implements a linked list using the objects of the class Node.
+
+It should have the following methods:
+
+insert: it accepts as parameter a String and creates a Node object. The Node object should be added to the end of the linked list
+print: prints all the elements of the linked list on a single line
+Example Input:
+hello
+Output:
+hello
+Example Input:
+world
+Output:
+hello world
+
+===============================================
+
+class MyLinkedList{
+Node first;
+MyLinkedList(){first=null;}
+public void insert(String s){
+Node n=new Node(s);
+if(first==null){first=n;}
+else{
+Node a=first;
+while(a.next!=null){
+a=a.next;
+}
+a.next=n;
+}
+}
+public void print(){
+
+Node n=first;
+while(n.next!=null){
+System.out.print(n.data+" ");
+n=n.next;
+}
+System.out.print(n.data+" ");
+System.out.println();
+}
+
+
+}
+/*class MyLinkedList{
+Node first;
+MyLinkedList(){
+first=null;}
+public void insert(String s){
+Node my=new Node(s);
+if(first==null)
+first=my;
+else{
+Node t=first;
+while(t.next!=null){
+t=t.next;}
+t.next=my;
+}
+}
+public void print(){
+Node t=first;
+while(t.next!=null){
+System.out.print(t.data+" ");
+t=t.next;}
+System.out.print(t.data);
+System.out.println();}
+}
+
+}
+
+}*/

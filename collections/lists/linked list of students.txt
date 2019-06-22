@@ -1,0 +1,64 @@
+You are given the following Student class:
+
+class Student{
+    int rollno;
+    String name;
+
+    Student(int rollno, String name){
+        this.rollno = rollno; this.name = name;
+    }
+}
+Write a class called Solution that has 3 non-static methods:
+
+printList: takes as parameter a Linked List of Student objects and prints their roll number and name. (Check example)
+deleteByRollno: takes as parameter an integer and a LinkedList of Student Objects. You have to delete that object from the list which has roll number equal to the given parameter
+deleteByName: takes as parameter a String and a LinkedList of Student Objects. You have to delete that object from the list which has name equal to the given parameter
+Example Input:
+print(studentList)
+Output:
+1: Alex | 2: Jack | 3: CooCoo |
+Example Input
+deletebyRollNo(2, studentList)
+print(studentList)
+Output:
+1: Alex | 3: CooCoo |
+Example Input:
+deletebyName(“Alex”, studentList)
+print(studentList)
+Output:
+3: CooCoo |
+
+==============================================================
+
+import java.util.LinkedList;
+//import java.util.Iterator;
+class Solution{
+public void printList(LinkedList<Student> myList){
+for(Student std: myList){
+System.out.print(std.rollno+": "+std.name+" | ");
+}System.out.println();
+}
+
+public void deleteByRollno(int num,LinkedList<Student> myList){
+
+for(int i = 0; i<myList.size(); i++){
+Student std = myList.get(i);
+if(std.rollno == num){
+myList.remove(myList.indexOf(std));
+i--;
+}
+}
+}
+public void deleteByName(String s,LinkedList<Student> myList){
+//Iterator it=myList.iterator();
+for(int i = 0; i<myList.size(); i++){
+Student std = myList.get(i);
+String s1=std.name;
+if(s1.equals(s)){
+myList.remove(myList.indexOf(std));
+i--;
+}
+}
+}
+
+}

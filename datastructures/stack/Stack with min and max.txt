@@ -1,0 +1,72 @@
+Write a class called MyStack. It should have the following:
+
+an integer array called data. Use this array to implement the stack
+an integer called capacity which tells us the maximum size of the data array
+Write a parameterized constructor that accepts the value for capacity.
+
+The MyStack class should have the following methods:
+
+push: accepts as parameter a String and pushes it to the stack. Returns nothing
+pop: pops and returns the topmost element from the stack. If the stack is empty, return -1.
+minimum: returns the minimum element in the stack. If the stack is empty then return -1
+maximum: returns the maximum element in the stack. If the stack is empty then return -1
+Note: input will be positive integers only.
+
+Only write the MyStack class. The Main class has already been written.
+
+====================================================================
+
+class MyStack{
+
+int data[];
+int capacity;
+int top;
+MyStack(int capacity){
+this.capacity=capacity;
+top=-1;
+data=new int[capacity];
+}
+public void push(int d){
+if(top<capacity-1){
+top++;
+data[top]=d;
+}
+}
+public int pop(){
+if(top<=-1){
+return -1;
+}
+else{
+int k=data[top];top--;
+return k;
+}
+}
+public int minimum(){
+if(top<=-1){
+return -1;
+}
+else{
+int min=data[0];
+for(int i=0;i<=top;i++){
+if(min>data[i]){
+min=data[i];
+}
+}
+return min;
+}
+}
+public int maximum(){
+if(top<=-1){
+return -1;
+}
+else{
+int max=data[0];
+for(int i=0;i<=top;i++){
+if(max<data[i]){
+max=data[i];
+}
+}
+return max;
+}
+}
+}

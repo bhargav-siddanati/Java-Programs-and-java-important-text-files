@@ -1,0 +1,24 @@
+import java.util.LinkedHashMap;
+import java.util.Map;
+class Im_map{
+
+    public static void main(String[]args){
+        LinkedHashMap<String,Integer> li=new LinkedHashMap<String,Integer>();
+        String s="hello my nam is bhargav then my work is trying to attempt programs";
+        String[] words=s.split(" ");
+        for(int i=0;i<words.length;i++){
+            if(li.get(words[i])==null){
+                li.put(words[i],1);
+            }
+            else{
+                int l=li.get(words[i]);
+                l++;
+                li.put(words[i],l);
+            }
+            
+        }
+        for(Map.Entry m: li.entrySet()){  
+            System.out.println(m.getKey()+" "+m.getValue());  
+         }  
+    }
+}

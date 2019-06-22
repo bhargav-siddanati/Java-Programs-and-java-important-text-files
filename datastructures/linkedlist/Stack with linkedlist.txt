@@ -1,0 +1,99 @@
+You are given the following Node class:
+
+class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+Implement a stack data structure using linked lists. Write a class called MyStackLinkedList. It should have the following data:
+
+A Node reference called top
+And the following methods:
+
+push: accepts a Node object and pushes it onto the stack. Does not return anything
+pop: returns and removes the Node object at the top of the stack. Returns null if the stack is empty
+isEmpty(): returns true if the stack is empty. Otherwise, return false
+print: prints the contents of the stack, from top to bottom. Print in a single line.
+
+=============================================================
+
+class MyStackLinkedList{
+Node first;
+MyStackLinkedList(){
+Node first=null;}
+
+public void push(Node a){
+a.next=first;
+first=a;
+}
+public Node pop(){
+if(!isEmpty()){
+Node n=first;
+first=first.next;
+return n;
+}
+else 
+return null;
+}
+
+public boolean isEmpty(){
+if(first==null)
+return true;
+else
+return false;
+}
+
+public void print(){
+if(!isEmpty()){
+Node n=first;
+while(n.next!=null){
+System.out.print(n.data+" ");
+n=n.next;
+}
+System.out.print(n.data+" ");}
+System.out.println();
+}
+}
+/*class MyStackLinkedList{
+Node first;
+MyStackLinkedList(){
+first=null;
+}
+public void push(Node obj){
+
+obj.next=first;
+first=obj;
+
+}
+public Node pop(){
+
+if(!isEmpty()){
+Node k=first;
+first=first.next;
+return k;
+}
+else{
+return null;
+}
+
+}
+public boolean isEmpty(){
+if(first==null){
+return true;}
+else{
+return false;}
+}
+public void print(){
+if(!isEmpty()){
+Node ob=first;
+while(ob.next!=null){
+System.out.print(ob.data+" ");
+ob=ob.next;
+}System.out.print(ob.data);}
+System.out.println();
+}
+}*/

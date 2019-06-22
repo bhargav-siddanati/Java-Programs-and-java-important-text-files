@@ -1,0 +1,98 @@
+Threads
+Threads are sometimes called lightweight processes. Both processes and threads provide an execution environment, but creating a new thread requires fewer resources than creating a new process.
+
+Threads exist within a process — every process has at least one. Threads share the process’s resources, including memory and open files. This makes for efficient, but potentially problematic, communication and we’ll explore that soon.
+
+It is important to note that multithreading is different from multiprocessing.
+
+Multiprocessing is usually done at an OS (Operating System) Level. For example, you might be reading this on your browser, while also listening to music on your system, and taking notes in a text editor like notepad.
+
+Here, your browser, music player and notepad are all using different processes.
+
+Multithreading is different from multiprocessing. In multithreading, we use many threads to make the most of our single process. Particularly, multithreading is very useful when we have many tasks in a program that will involve waiting.
+
+For example, let’s say one of our methods is using a printer. Now, when we come to this method, the rest of the program is waiting for the method to finish, i.e, the printer to stop printing. Imagine if the printer takes more than 5 seconds to print - our program will slow down by a lot!
+
+This is where multithreading helps. In multithreading, we run different threads for different tasks. A thread starts executing when another thread becomes idle. Thus, when our method starts talking to the printer and is waiting for it to print, we can have another thread to continue with our logic of the program.
+
+In Java, there are 2 ways to create threads:
+
+Implement the Runnable Interface
+Extend the Thread class
+Implement the Runnable Interface
+The Runnable interface defines a single method, run, meant to contain the code executed in the thread.
+
+// Java code for thread creation by implementing
+// the Runnable Interface
+class MultithreadingDemo implements Runnable
+{
+    public void run()
+    {
+        System.out.println("Starting thread!");
+    }
+}
+ 
+// Main Class
+class Multithread
+{
+    public static void main(String[] args)
+    {
+        int n = 8; // Number of threads
+        for (int i=0; i<8; i++)
+        {
+            Thread object = new Thread(new MultithreadingDemo());
+            object.start(); // the start method executes the thread's run method
+        }
+    }
+}
+Output:
+
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Here, we have created a new Thread object and initiate it’s run method using the start command.
+
+Extending the Thread Class
+// Java code for thread creation by extending
+// the Thread class
+class MultithreadingDemo extends Thread
+{
+    public void run()
+    {
+        System.out.println("Starting thread!");
+    }
+}
+ 
+// Main Class
+public class Multithread
+{
+    public static void main(String[] args)
+    {
+        int n = 8; // Number of threads
+        for (int i=0; i<8; i++)
+        {
+            MultithreadingDemo object = new MultithreadingDemo();
+            object.start();
+        }
+    }
+}
+Output:
+
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Starting thread!
+Here, we have created a new Thread object and initiate it’s run method using the start command.
+
+Generally, we prefer to use the first way of creating a thread as it allows to use multiple inheritance (possible with interfaces).
+
+Try out creating some threads yourself!

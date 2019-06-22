@@ -1,0 +1,27 @@
+Mr. Jack is trying to create a Set to store strings. However, he’s not really sure if he has got it right. He wants you to tell him if he’s doing it correctly.
+
+This is the arrangement: he will take all the strings from his set and give them to you in a String array. Accordingly, you have to say true if the strings form a Set and false if they don’t.
+
+Write a static method Met that accepts as parameter a 1D String array and returns true or false as per the above condition.
+
+Write only the method, the main class has already been written.
+
+==========================================================
+
+public static boolean Met(String a[]){
+int k=a.length,x=0;
+for(int i=0;i<k;i++){
+for(int j=i+1;j<k;j++){
+if(a[i].equals(a[j]))
+x++;
+}
+}
+if(x>0)
+return false;
+else 
+return true;
+}
+
+
+
+

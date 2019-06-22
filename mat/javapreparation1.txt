@@ -1,0 +1,100 @@
+OOPs
+What is a class? What is an object? What are the differences?
+A class is a user defined blueprint. It represents a set of properties and methods which will be common to all objects of this class. An object is an instance of the class. An object has state and behavior. We use classes to define the rules for our objects, and then represent our logic in the form of objects.For example, we would want to model students in a school. Here, we first define what are the properties of the student: a roll number - integer, full name - string, marks in different subjects - an array of integers and so on. However, to actually represent a particular student, we need to create an object for that student.
+
+What is a constructor? How many types of constructors are there? What’s the difference?
+Constructors are used to initialize the an object, i.e., assign some values to the object. It has the same name as the class. Constructors don’t specify any return type. They are called at the time of object creation and return an instance of the object.
+
+There are 2 types of constructors: default and parameterized constructors.
+
+Default constructors are also called no argument constructors. These don’t take any arguments, and define the default values of the properties of the object. We can define only one default constructor.
+
+Parameterized constructors take arguments and accordingly assign those values to the properties of the object. With a default constructor, every object has the same values, but in a parameterized constructor we define different values for each object. We can define more than one parameterized constructor in a class.
+
+What is Abstraction, Encapsulation, Inheritance, Polymorphism?
+These 4 are the fundamental concepts of OOP: Abstraction, Encapsulation, Inheritance and Polymorphism
+
+Abstraction means hiding or representing complex features with simple interfaces. For example, a remote control to a TV - it turns on the TV but we don’t really know what’s happening inside. Similarly, we might define methods in classes that have some internal logic - but we are concerned only with what input goes in and what output comes out.
+
+Encapsulation means that we are keeping all the related data in single unit. This way, only the unit can change the data and we can guarantee that the data follows some rules. For example, we define some data as private and then access that data only through getters and setters that are part of the same class. Now, since we are defining these getters and setters, we can control if the data is being changed in ways we don’t like. If the someone requests the setter for a password to set a blank password - we can make sure the setter doesn’t do this, because the setter is in our control. This way, we encapsulate the data and it’s safety in one unit.
+
+Inheritance allows us to create new classes that share the attributes of existing classes. For example, we are defining classes that represent a vehicle. Many vehicles will share the same properties like wheels, weight, color and some methods like acceleration, braking, turning. We would want to define it once and then reuse it whenever possible. In this case we would define a vehicle class and then inherit from it for the other classes.
+
+Polymorphism is concept of using the same function for different uses. For example, we might have a function called add that adds 2 integers. We might also have another function add, but this one joins 2 strings. Both of these have different functionality, but the function names are the same. This is polymorphism.
+
+What is the use of System class?
+Java System Class is one of the core classes. It is the class which has the System.out.println() method. It provides a lot of utility methods like getting the current time, reading environment variables and also copying arrays.
+
+All of it’s methods are static and we can’t create objects of the System class nor can we inherit from it.
+
+What is difference between object oriented programming language and object based programming language?
+Object based programming languages follow all the features of OOPs except Inheritance. Examples of object based programming languages are JavaScript, VBScript etc.
+
+Why Java is not pure Object Oriented language?
+Java is not said to be pure object oriented because it support primitive types such as int, byte, short, long etc. In a pure object oriented language, everything should be an object, and we should not have any primitive data types.
+
+What is an object reference? How are objects different from primitives?
+In Java, when a new object is created, we refer to it using an object reference. This reference only refers to the object and is not actually the object.
+
+For example, for the class student, if we do Student myStudent = new Student(), a new Student object is created and myStudent only points to it.
+
+If we say Student myStudent2 = myStudent, then both these references are not referring to the same object.
+
+If we make any changes in the object using the first reference, will also reflect in the second reference because both are referring to the same object.
+
+In primitives this is not the case. If define int a = 5 and then do int b = a, then b gets a copy of a and not a reference to a.
+
+How can we create the copy of an object? What are the different ways?
+Yes, we can create the copy of an object. If we simply use the assignment or = operator, then only the reference gets copied. Instead, to create a copy of the object we can use the clone() method. For this, we need to implement the Cloneable interface.
+
+By default, the clone() method will only do a shallow copy. This means that if there are object references within the object being cloned, the references are copied, but new objects are not created.
+
+To do a deep copy, we need to additionally create copies of the objects so that the new object has references to different objects than the previous ones.
+
+What is Garbage Collection?
+Garbage Collection is the process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects. In Java, process of deallocating memory is handled automatically by the garbage collector.
+
+What is overloading and overriding in java?
+When we have more than one method with same name in a single class but the arguments are different, then it is called as method overloading.
+
+Overriding concept comes in picture with inheritance when we have two methods with same signature, one in parent class and another in child class.
+
+Can we overload main method?
+Yes, we can have multiple methods with name “main” in a single class. However if we run the class, java runtime environment will look for main method with syntax as public static void main(String args[]).
+
+What is an access modifier?
+Java provides access control through public, private and protected access modifier keywords. When none of these are used, it’s called default access modifier. These access modifiers help us define who gets to access the specific property or method being mentioned.
+
+What does this keyword do? There are 4 uses of the this keyword:
+
+To refer to the variable of the current instance/object
+To call the constructor of the current class
+To pass the current object as a parameter in a constructor, or method
+To return the current instance/object
+What does super keyword do?
+
+There are 3 uses of the ‘super’ keyword:
+
+To refer to the variable of the super or parent class
+to call a method of the parent class
+To call the constructor of the parent class. But we can do it only on the first line of the constructor
+Can you use this() and super() both in a constructor?
+
+No. Because super() or this() must be the first statement
+
+What is final keyword?
+final keyword is used with Class to make sure no other class can extend it, for example String class is final and we can’t extend it.
+
+We can use final keyword with methods to make sure child classes can’t override it.
+
+final keyword can be used with variables to make sure that it can be assigned only once. However the state of the variable can be changed, for example we can assign a final variable to an object only once but the object variables can change later on.
+
+Java interface variables are by default final and static.
+
+What is an interface?
+Interfaces in Java tell a class what it should do, but don’t define how it should be done. In interfaces method signatures are given, but the body is not. For example, we might have an interface called car that has to have acceleration, braking etc. How exactly each car does it is not up to the interface. All the classes that implement this interface need to define the required methods. If they don’t, then we get a compile-time error.
+
+With Java 8, it is possible to have default implementations of the methods as well. Classes can implement multiple interfaces at a time.
+
+What is an abstract class?
+An abstract class is one which can’t have objects and it’s only purpose is so that other classes can inherit from it. Abstract classes can have both default and abstract methods. Abstract methods are those that must be implemented by the child classes for sure, otherwise we get an error.We can inherit only one abstract class at a time.

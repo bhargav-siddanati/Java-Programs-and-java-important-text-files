@@ -1,0 +1,73 @@
+Write a class called Solution which has as data 1 string called expression and a parameterized constructor to accept the value of expression.
+
+expression will contain a postfix expression. Write a method in the Solution class called eval that returns an integer with the evaluated value of expression.
+
+Note: all operands will be of single digit only
+
+Example Input:
+231*+9-
+Output:
+-4
+Example Input:
+237*+95/-
+Output
+22
+
+========================================================================
+
+class Solution{
+String expression; 
+int a[];
+int t;
+Solution(String k){
+expression=k;
+a=new int[k.length()];
+t=-1;
+}
+public int eval()
+{
+int k=0;
+for(int i=0;i<expression.length();i++)
+{
+if(Character.isDigit(expression.charAt(i)))
+{
+int j=Character.getNumericValue(expression.charAt(i));
+push(j);
+}
+else{
+char m=expression.charAt(i);
+k=lol(m);
+push(k);
+}
+}
+return a[t];
+}
+public void push(int j){
+if(t<expression.length()-1){
+t++;
+a[t]=j;
+}
+}
+public int pop(){
+int e=a[t];
+t--;
+return e;
+}
+public int lol(char m){
+int q=pop();
+int s=pop();
+switch(m){
+case'+':
+return (s+q);
+case'-':
+return (s-q);
+case'*':
+return (s*q);
+case'/':
+return (s/q);
+case'^':
+return ((int)Math.pow(s,q));
+}
+return -1;
+}
+}

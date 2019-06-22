@@ -1,0 +1,111 @@
+BST - Binary Search Trees
+Binary Search Trees are special types of trees. It consists of nodes, just like linked lists. However, the main difference is that the nodes can have 2 connections, thus allowing us to branch out.
+
+In linked list, we could only connect to 1 other node - limiting us to a list only.
+
+In a binary search tree, all the nodes must follow these rules:
+
+All the nodes to the left of a node must be lesser than the node
+All the nodes to the right of a node must be greater than the node
+The above rules are applicable for all nodes, which means that the subtrees to the left and right of any node are themselves BSTs
+Example:
+
+BST
+
+Node class
+Let’s define the node of a BST:
+
+class Node{
+    int data;
+    Node left;
+    Node right;
+    
+    Node(int data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+And let us define our BST class. The top-most element is referred to as the root of the BST.
+
+class BST{
+    Node root;
+    
+    BST(){
+        root = null;
+    }
+}
+Inserting in a BST
+When inserting an element in a BST, we check at every node to understand where our element has to go.
+
+For example, let’s say we have the following operations:
+
+Insert 3
+Insert 7
+Insert 5
+Insert 2
+Insert 8
+This is how the insertion process would be:
+
+BST
+
+Let’s write the insert method:
+
+public void insert(int data){
+        Node parent = root;
+        if(parent==null){
+            root = new Node(data);
+        }
+        else {
+            Node x = root;
+            while(x!=null){
+                parent = x;
+                if(data > x.data) 
+                    x = x.right;
+                else if (data < x.data) 
+                    x = x.left;
+            }
+            if(data > parent.data)
+                parent.right = new Node(data);
+            else if(data < parent.data)
+                parent.left = new Node(data);
+            
+        }
+    }
+First, we check to see if the root is null, i.e., is the tree empty? If yes, then create a new node and make that the root.
+
+Otherwise, we try to find the exact position where our node needs to be inserted.
+We keep probing at every nod to find which parent node has a null value for x such that it satisfies the properties of BST.
+
+We then check with the parent about where to insert the new node - to the left or the right.
+
+Searching in a BST
+As the name suggests, Binary Search Trees are really useful when it comes to searching elements.
+
+We have to follow these steps:
+
+Start from the root
+If the key is equal to the node - return true
+If the node is null - return false
+If the key is less than the node then go to the left of the node
+If the key is greater than the node then go to the right of the node
+Repeat steps 2 -> 4
+Let’s write the search method:
+
+public boolean search(int data){
+        Node curr_node = root;
+        while(curr_node!=null){
+            if(curr_node.data == data)
+                return true;
+            else if(curr_node.data < data)
+                curr_node = curr_node.right;
+            else if(curr_node.data > data)
+                curr_node = curr_node.left;
+        }
+        return false;
+    }
+Trees are a vast subject. There are many things to explore: how do we print a tree? How do we delete from a tree?
+
+All these are kept as programming exercises for you. Make sure you check the hints and resources to understand every method!
+
+All the best!

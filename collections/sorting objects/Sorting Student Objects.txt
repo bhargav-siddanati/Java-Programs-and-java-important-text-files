@@ -1,0 +1,73 @@
+You are given the following Student class:
+
+class Student{
+    int age;
+    String first_name;
+    String last_name;
+
+    Student(int age, String first_name, String last_name) {
+        this.age = age;
+        this.first_name = first_name;
+        this.last_name = last_name;
+    }
+}
+Write a class called Solution. It has 4 methods:
+
+insert - accepts as parameter a Student object and stores it.
+printByAge - prints all the students in decreasing order of age
+printByFName - prints all the students in alphabetical order of first name
+printByLName - prints all the students in reverse alphabetical order of last name
+Only write the Solution class. All other classes have been written.
+
+Print in this format:
+
+first_name last_name, age
+
+=================================================================
+
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Comparator;
+class Solution{
+LinkedList<Student> l=new LinkedList<Student>();
+public void insert(Student s){
+l.add(s);
+}
+public void printByAge(){
+Collections.sort(l,new ByAge());
+for(Student s:l){
+System.out.println(s.first_name+" "+s.last_name+", "+s.age);
+}
+}
+public void printByFName(){
+Collections.sort(l,new ByFName());
+for(Student s:l){
+System.out.println(s.first_name+" "+s.last_name+", "+s.age);
+}
+}
+public void printbyLName(){
+Collections.sort(l,new byLName());
+for(Student s:l){
+System.out.println(s.first_name+" "+s.last_name+", "+s.age);
+}
+}
+
+}
+class ByAge implements Comparator<Student>{
+public int compare(Student a,Student b){
+return (b.age - a.age);
+}
+
+}
+class ByFName implements Comparator<Student>{
+public int compare(Student a,Student b){
+return (a.first_name.compareTo(b.first_name));
+}
+
+}
+class byLName implements Comparator<Student>{
+public int compare(Student a,Student b){
+return (b.last_name.compareTo(a.last_name));
+}
+
+}

@@ -1,0 +1,54 @@
+Intro to Paths & Files
+Java gives us a large number of options to deal with files. We will cover some of the most important ones here, but make sure to explore further and find even more fun and useful things to do with files!
+
+To see how we can manipulate files, we must first understand the path of the file or where the file is located.
+
+In Java, we can do this using the Path object. Paths are differently defined in Unix and Windows environments. Many of our examples might only be in the Windows environment, so ensure that you are reading the official documentation in case you are on other environments.
+
+Let’s say we want to create the a Path object for the poem.txt we had earlier seen.
+
+Path p = Paths.get("C:\\Users\\Edyst\\Desktop\\com\\company\\poem.txt");
+Obviously, we must import the following:
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+Once, we have the Path object, we can do some interesting this. For example:
+
+Method	Returns	Description
+getFileName()	poem.txt	Returns the file name or the last element of the sequence of name elements.
+getName(0)	Users	Returns the path element corresponding to the specified index. The 0th element is the path element closest to the root.
+getNameCount()	10	Returns the number of elements in the path.
+subpath(0,2)	Users\Edyst	Returns the subsequence of the Path (not including a root element) as specified by the beginning and ending indexes.
+getParent()	C:\Users\Edyst\Desktop\com\company	Returns the path of the parent directory.
+getRoot	()	C:\	Returns the root of the path.
+toFile()	-	Returns a File object with the mentioned path
+The last method is particularly important to us. When we open a stream, we can do so like this:
+
+ip = new BufferedReader(new FileReader(p.toFile()));
+This way, we don’t need to hard code the path of the file everywhere.
+
+Creating a File
+Java has a lot of ways to create files - so make usre you keep exploring when you attempt the questions in order to do learn more ways!
+
+Let’s say we want to create the poem.txt file. We first create the path, and then use the Files.createFile() method to create the path.
+
+As always, this can definitely create an exception, because the file could already exist. As is our practice with any I/O related code, we shall continue using the try-catch blocks.
+
+try
+    {
+    Path p = Paths.get("C:\\Users\\Edyst\\Desktop\\com\\company\\poem.txt");
+    Files.createFile(p);
+    }
+catch(Exception e)
+    {
+        System.out.println(e);
+    }
+Similarly, the following method helps us create a new Directory or Folder:
+
+Files.createDirectory(p);
+We have already seen how we can read and write to files. These basic operations are very useful! Attempt the questions to start implementing these methods and others as well.
+
+All the best!
+
+Post Your Question
+?

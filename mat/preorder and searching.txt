@@ -1,0 +1,165 @@
+Traversal
+Before trees, all of the data structures we have seen are linear in nature. What that meant was that there was only one way of going through the data structure: linearly.
+
+In a linked list, we can start from first and keep going till we reach the end.
+
+However, what about a tree? How will we go through each element?
+
+Take the example of the following tree:
+
+Tree
+
+How will we display all the elements? In what order?
+
+In trees, thereare many ways in which we can traverse. Let us look at one way called the preorder traversal.
+
+Preorder Traversal
+In Preorder Traversal, we do the following steps at each node:
+
+we print the current node
+we visit the left subtree
+we visit the right subtree
+Tree
+
+So, for the following tree:
+
+Tree
+
+Our Preorder Traversal is:
+
+7, 4, 2, 3, 6, 5, 12, 9, 8, 11, 19, 15, 20
+The pesudo-code for the traversal is:
+
+preorder (node x)
+    if x == null
+        return
+    else
+        print x.data
+        preorder(x.left)
+        preorder(x.right)
+As you can see, we have used recursion to help us with the traversal. As you attempt more programs, you will notice that recursion is very useful when it comes to trees.
+
+There are many more traversals in trees - read up about them and attempt the questions!
+
+
+
+INTEGER
+
+class Node{
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+class BST{
+Node root;
+BST(){
+root=null;
+}
+public void insert(int data){
+Node p=root;
+if(p==null){
+root=new Node(data);
+}
+else{
+Node x=root;
+while(x!=null)
+{
+p=x;
+if(data>x.data)
+x=x.right;
+else if(data<x.data)
+x=x.left;
+}
+if(data>p.data)
+p.right=new Node(data);
+else if(data<p.data)
+p.left=new Node(data);
+}
+}
+
+public void preorder(){
+pr(root);
+System.out.println();
+}
+public void pr(Node a){
+if(a!=null){
+System.out.print(a.data+" ");
+pr(a.left);
+pr(a.right);
+}
+
+}
+
+}
+
+
+STRING
+
+class Node{
+    String data;
+    Node left;
+    Node right;
+
+    Node(String data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+class BST{
+Node root;
+BST(){
+root=null;
+}
+public void insert(String d) {
+      if (root == null) {
+         root = new Node(d);
+         
+      }
+      Node loc = root;
+      while (true) {
+         if (d.compareTo(loc.data) < 0)
+	 { 
+            if (loc.left != null)
+		 loc = loc.left;
+            else { 
+		loc.left = new Node(d); 
+		break;
+		 }
+         }
+         else if (d.compareTo(loc.data) > 0) 
+	{ 
+            if (loc.right != null) 
+		loc = loc.right;
+            else { 	
+		loc.right = new Node(d); 
+		break; 
+		}
+         }
+         else break; 
+      }
+   }
+public void preorder(){
+pr(root);
+System.out.println();
+}
+public void pr(Node a){
+if(a!=null){
+System.out.print(a.data+" ");
+pr(a.left);
+pr(a.right);
+}
+
+}
+
+}
+
+
+
+

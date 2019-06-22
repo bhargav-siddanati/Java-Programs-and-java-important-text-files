@@ -1,0 +1,804 @@
+/*
+//deleteforChar
+
+import java.util.LinkedList;
+class Solution
+{    
+LinkedList<String> myList = new LinkedList<String>();
+
+void insert(String a)
+{
+    myList.add(a);
+}
+
+void deleteForChar(char c)
+{
+   int i = 0;
+		while(i < myList.size())
+		{
+			String test = myList.get(i);
+			if(test.charAt(0) == c)
+			{
+				myList.remove(i);
+			}
+			else
+			{
+				i++;
+			}
+		}
+}
+
+void print()
+{
+    for(String s : myList)
+    {
+        System.out.print(s+" ");
+    }
+    System.out.println("");
+}
+
+}
+
+
+//Integer ArrayList
+
+import java.util.ArrayList;
+class Solution 
+{
+ArrayList<Integer> myList = new ArrayList<Integer>();
+
+void insert(int a)
+{
+    myList.add(a);
+}
+
+void deletePrime()
+{
+    int i=0,c=0;
+    while(i<myList.size())
+    {
+        if(ise(myList.get(i)))
+        {
+            myList.remove(myList.get(i));
+        }
+        else
+            i++;
+    }
+}
+
+boolean ise(int n)
+{
+    int c=0;
+    for(int i=2;i <= n/2;i++) 
+    {
+        if(n%i==0)
+        {
+            c++;
+            break;
+        }
+    }
+    if(n<2)
+    return false;
+    else if(c==0)
+    return true;
+    else
+    return false;
+}
+
+void print()
+{
+    for(Integer s : myList)
+    {
+        System.out.print(s+" ");
+    }
+    System.out.println("");
+}
+
+}
+
+//ArrayList of Items
+
+import java.util.ArrayList;
+import java.util.Collections;
+class Solution
+{
+    void printList(ArrayList<Item> a)
+    {
+        for(Item s : a)
+            System.out.println(s.name+", "+s.price+", "+s.inventory);
+    }
+
+    void findMaxByPrice(ArrayList<Item> a)
+    {
+        int max=0;
+        String names="";
+        for(Item s : a)
+        {
+            if(s.price>max)
+            {
+                max=s.price;
+                names=s.name;
+            }
+        }
+        System.out.println(names);
+    }
+    void findMinInventory(ArrayList<Item> a)
+    {
+        int max=1000000;
+        String names="";
+        for(Item s : a)
+        {
+            if(s.inventory<max)
+            {
+                max=s.inventory;
+                names=s.name;
+            }
+        }
+        System.out.println(names);
+    }
+}
+
+import java.util.ArrayList;
+import java.util.Collections;
+class Solution
+{
+    ArrayList<Item> myList=new ArrayList<Item>();
+    public void insert(int price, int inventory, String name)
+    {
+        Item t=new Item(price,inventory,name);
+        myList.add(t);
+    }
+    public void printList()
+    {
+        for(Item s : myList)
+        {
+            System.out.println(s.name+", "+s.price+", "+s.inventory);
+        }
+        //System.out.println("");
+    }
+
+    void printShortest()
+    {
+        int i=0,max=0,ory=0;
+        String n="";
+        for(Item s : myList)
+        {
+            if(s.name.length()<n.length())
+            {
+                max=s.price;
+                n=s.name;
+                ory=s.inventory;
+            }
+            else
+            {
+                max=s.price;
+                n=s.name;
+                ory=s.inventory;
+            }
+        }
+        for(Item s : myList)
+        {
+            if(s.name.length()==n.length())
+            {
+                if((s.name).compareTo(n)<i)
+                {
+                    max=s.price;
+                    n=s.name;
+                    ory=s.inventory;
+                }
+            }
+        }
+        System.out.println(n+", "+max+", "+ory);
+    }
+    void deleteCostly()
+    {
+        int ory=Integer.MIN_VALUE,max=0;
+        String n="";
+        Item r=null;
+        for(Item s : myList)
+        {
+            if(s.inventory>ory)
+            {
+                max=s.price;
+                n=s.name;
+                ory=s.inventory;
+                r=s;
+            }
+        }
+        if(r!=null)
+            myList.remove(r);
+    }
+}
+
+
+//LinkedList of Items
+
+import java.util.LinkedList;
+class Solution
+{
+
+public void printList(LinkedList<Student> a)
+{
+    for(Student s : a)
+    {
+        System.out.print(s.rollno+": "+s.name+" | ");
+    }
+    System.out.println("");
+}
+
+public void deleteByRollno(int a, LinkedList<Student> p)
+{
+    Student r=null;
+    for(Student s : p)
+    {
+        if(s.rollno==a)
+        {
+            r=s;
+            break;
+        }
+    }
+    if(r!=null)
+    p.remove(r);
+}
+
+public void deleteByName(String h,LinkedList<Student> g)
+{
+Student d=null;
+for(Student s : g)
+{
+if(s.name.equals(h))
+d=s;
+}
+if(d!=null)
+g.remove(d);
+}
+
+}
+
+
+import java.util.LinkedList;
+class Solution
+{
+LinkedList<Student> myList=new LinkedList<Student>();
+
+public void insert(int rollno, String name)
+{
+    Student t=new Student(rollno,name);
+    myList.add(t);
+}
+
+public void printList()
+{
+    for(Student s : myList)
+    {
+        System.out.print(s.rollno+": "+s.name+" | ");
+    }
+    System.out.println("");
+}
+
+public void findByName(String a)
+{
+    Student r=null;
+    int v=0;
+    for(Student s : myList)
+    {
+        if(s.name.equals(a))
+        {
+            v=s.rollno;
+        }
+    }
+    System.out.println(v);
+}
+
+public void deleteByName(String h)
+{
+Student d=null;
+for(Student s : myList)
+{
+if(s.name.equals(h))
+d=s;
+}
+if(d!=null)
+myList.remove(d);
+}
+
+}
+
+//Set Trail
+
+public static boolean Met(String [] a)
+{
+//return true;
+    //String g=a[0];
+    int i=0,j=0,c=0;
+    for(i=0;i<a.length;i++)
+    {     
+        for(j=i+1;j<a.length;j++)
+        {
+            if(a[i].equals(a[j]))
+            {
+                c++;     
+                break;
+            }
+        }
+    }
+    if(c==0)
+        return true;
+    else
+        return false;
+}
+
+
+//Name Pairs
+
+public static void Met(String [][] matrix)
+{
+    int i=0,j=0,k=0,l=0,c=0;
+    TreeSet<String> mySet=new TreeSet<String>();
+    for (int row = 0; row < matrix.length; row++) 
+    {
+        for (int column = 0; column < matrix[row].length; column++) 
+        {
+             if(mySet.add((matrix[row][column])))
+                 c++;
+             else
+                 c=c;
+        }
+        System.out.println(c/2);
+    } 
+}
+
+
+//Desert
+
+public static int Met(int target)
+{
+     target = Math.abs(target); 
+     int sum = 0, step = 0; 
+     while (sum < target || (sum - target) % 2 != 0)
+     {
+         step++; 
+         sum += step; 
+     } 
+     return step; 
+}
+
+
+//XY Confusion
+
+public static TreeMap Met(TreeMap<String,String> myMap)
+{
+    String a=myMap.get("y");
+    myMap.put("x",a);
+    myMap.put("y","");
+    return myMap;
+}
+
+
+//Easy as One, Two, & Three
+
+public static TreeMap Met(TreeMap<String,String> myMap)
+{
+    String a = myMap.get("one");
+    String b = myMap.get("two");
+    String c = myMap.get("three");
+    if(a.length()==b.length())
+        myMap.put("three","");
+    else if(a.length()>b.length())
+        myMap.put("three",a);
+    else if(a.length()<b.length())
+        myMap.put("three",b);
+    return myMap;
+}
+
+
+//Furnishing woes
+
+public static TreeMap Met(TreeMap<String,String> myMap)
+{
+    String a = "table";
+    String b = "wardrobe";
+    String c = "window";
+    if(myMap.containsKey(a))
+    {
+        myMap.put("chair",myMap.get("table"));
+    }
+    if(myMap.containsKey(b))
+    {
+        myMap.put("bed",myMap.get("wardrobe"));
+    }
+    if(myMap.containsKey(c))
+    {
+        myMap.put("curtain",myMap.get("window"));
+    }
+    return myMap;
+}
+
+
+//Counting Strings, not Stars
+
+public static TreeMap Met(String a[])
+{
+    TreeMap<String,Integer> map=new TreeMap<String,Integer>();
+    for(int i=0;i<a.length;i++)
+    {
+        map.put(a[i],a[i].length());
+    }
+    return map;
+}
+
+
+
+//Medicines
+
+public static TreeMap Met(String a[])
+{
+    TreeMap<Character,Character> map=new TreeMap<Character,Character>();
+    for(int i=0;i<a.length;i++)
+    {
+        map.put( (a[i].charAt(0)),(a[i].charAt(a[i].length() -1)) );
+    }
+    return map;
+}
+
+
+//the Editor
+
+public static TreeMap Met(ArrayList<String> strings)
+{
+    TreeMap<String, Integer> map = new TreeMap<String, Integer>();
+    int count = 0;
+  for (String s:strings) 
+  {
+    if (map.containsKey(s))
+    {
+      count = map.get(s);
+      map.put(s, count + 1);
+    } 
+    else 
+        map.put(s, 1);
+  }
+  return map;
+}
+
+
+
+//Magic Strings
+
+public static String Met(String [] strings)
+{
+    LinkedHashMap<String, Integer> test    = new LinkedHashMap<String, Integer>();
+ String res= "";
+  
+ for (int i = 0; i < strings.length; i++) 
+ {
+    
+   String key = strings[i];
+    
+   if (test.containsKey(key))
+   {
+     int val = test.get(key);
+     val++;
+     if (val % 2 == 0)
+     {
+      res = res+key;
+     }
+     test.put(key, val);
+   } 
+   else 
+   {
+     test.put(key, 1);
+   }   
+ }  
+ return res;
+}
+
+
+
+//String boolean
+
+public static LinkedHashMap Met(String [] a)
+{
+    LinkedHashMap<String,Boolean> w=new LinkedHashMap<String,Boolean>();
+    int i=0,j=0;
+    for(i=0;i<a.length;i++)
+    {
+        for(j=0;j<a.length;j++)
+        {           
+            if( (i!=j) && (a[i].equals(a[j])) )
+                break;
+        }
+        if(j==a.length)    
+            w.put(a[i],false);
+        else
+            w.put(a[i],true);
+    }
+    return w;
+}
+
+
+//Summing Strings
+
+public static LinkedHashMap Met(String[] strings) {
+        LinkedHashMap<String,String> map=new LinkedHashMap<String,String>();
+
+        for (int i=0;i<strings.length;i++) {
+                char b=strings[i].charAt(0);
+                String d=Character.toString(b);
+                if (!map.containsKey(d))
+                {
+                map.put(d, strings[i]);
+                }
+                else if (map.containsKey(d))
+                {
+                    map.put(d,map.get(d)+strings[i]);
+                }
+        }
+
+        return map;
+    }
+
+
+
+//Adventure Land
+
+import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.*;
+class Player
+{
+    String name;
+    int speed,health;
+
+    Player(String name, int speed, int health)
+    {
+        this.name=name;this.speed=speed;this.health=health;
+    }
+}
+
+class Leaderboard
+{
+    LinkedList<Player> myList = new LinkedList<Player>();
+    
+    public void insert(Player a)
+    {
+        myList.add(new Player(a.name, a.speed, a.health));
+    }
+    
+    public void print()
+    {
+        Collections.sort(myList,new players());
+        for(Player s : myList)
+        {
+            System.out.println(s.name + ", " + s.speed+ ", " +s.health);
+        }
+    }
+}
+
+class players implements Comparator<Player>
+{
+    public int compare(Player t, Player s)
+    {
+	    if(t.health > s.health)
+		    return 1;
+	    else
+		    return -1;
+    }
+}
+
+
+//University
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.ArrayList;
+class Student
+{
+    int total_marks;
+    String first_name;
+    String last_name;
+    Student(int total_marks,String first_name,String last_name)
+    {
+        this.total_marks=total_marks;
+        this.first_name=first_name;
+        this.last_name=last_name;
+    }
+}
+
+class University
+{
+    ArrayList<Student> myList= new ArrayList<Student>();
+    public void insert(Student a)
+    {
+        myList.add(new Student(a.total_marks,a.first_name,a.last_name));
+    }
+    public void print()
+    {
+        Collections.sort(myList,new MyMarksComp());
+        for(Student s : myList)
+        {
+            System.out.println(s.first_name + " " + s.last_name+", " + s.total_marks);
+        }
+    }
+}
+
+class MyMarksComp implements Comparator<Student>
+{
+ 
+    @Override
+    public int compare(Student e1, Student e2) 
+    {
+        if(e1.total_marks < e2.total_marks)
+        {
+            return 1;
+        }
+        else if(e1.total_marks > e2.total_marks)
+        {
+            return -1;
+        }
+        if(e1.total_marks==e2.total_marks)
+        {
+            int k = (e1.first_name).compareTo(e2.first_name);
+            if(k>0)
+                return 1;
+            if(k<0) 
+                return -1;
+        }
+        if((e1.first_name).equals(e2.first_name))
+        {
+            int k = (e1.last_name).compareTo(e2.last_name);
+            if(k>0)
+                return 1;
+            if(k<0) 
+                return -1;
+        }
+        return 0;       
+    }
+}
+
+
+//Sorting Student Objects
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.*;
+class Solution
+{
+    LinkedList<Student> listofStudents = new LinkedList<Student>();
+    public void insert(Student s)
+    {
+        listofStudents.add(new Student(s.age,s.first_name,s.last_name));
+    }
+    public void printByAge()
+    {
+        Collections.sort(listofStudents, new StudentSortByAge());
+        for(Student st : listofStudents){
+            System.out.println(st.first_name + " " +st.last_name + ", " + st.age);
+        }
+    }
+    public void printByFName()
+    {
+        Collections.sort(listofStudents, new StudentSortByFName());
+        for(Student st : listofStudents){
+            System.out.println(st.first_name + " " +st.last_name + ", " + st.age);
+        }
+    }
+    public void printbyLName()
+    {
+        Collections.sort(listofStudents, new StudentSortByLName());
+        for(Student st : listofStudents){
+            System.out.println(st.first_name + " " +st.last_name + ", " + st.age);
+        }
+    }
+}
+
+
+class StudentSortByAge implements Comparator<Student>{
+    public int compare(Student s1, Student s2){
+    	if(s1.age < s2.age)
+	        return 1;
+	    if(s1.age > s2.age)
+    	    return -1;
+	    return 0;
+    }
+}
+
+class StudentSortByFName implements Comparator<Student>{
+    public int compare(Student s1, Student s2){
+    int k = (s1.first_name).compareTo(s2.first_name);
+    	if(k>0)
+	        return 1;
+	    if(k<0)
+    	    return -1;
+	    return 0;
+    }
+}
+
+class StudentSortByLName implements Comparator<Student>{
+    public int compare(Student s1, Student s2){
+    int k = (s1.last_name).compareTo(s2.last_name);
+    	if(k<0)
+	        return 1;
+	    if(k>0)
+    	    return -1;
+	    return 0;
+    }
+}
+
+
+
+//Sorting Book Objects
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.*;
+class Solution
+{
+    LinkedList<Book> listofSales = new LinkedList<Book>();
+    public void insert(Book s)
+    {
+        listofSales.add(new Book(s.sales,s.name,s.is_published));
+    }
+    public void printByName()
+    {
+        Collections.sort(listofSales, new StudentSortByName());
+        for(Book st : listofSales)
+        {
+            System.out.println(st.name + " " +st.sales + " " + st.is_published);
+        }
+    }
+    public void printByStatus()
+    {
+            Collections.sort(listofSales, new StudentSortByStatus());
+        for(Book st : listofSales)
+        {
+            if(st.is_published==true)
+                System.out.println(st.name + " " +st.sales + " " + st.is_published);
+        }
+        for(Book st : listofSales)
+        {
+            if(st.is_published==false)
+                System.out.println(st.name + " " +st.sales + " " + st.is_published);
+        }
+    }
+}
+
+class StudentSortByName implements Comparator<Book>
+{
+    public int compare(Book s1, Book s2)
+    {
+        int k = (s1.name).compareTo(s2.name);
+    	if(k>0)
+	        return 1;
+	    if(k<0)
+    	    return -1;
+	    return 0;
+    }
+}
+
+class StudentSortByStatus implements Comparator<Book>
+{
+    public int compare(Book s1, Book s2)
+    {
+        if(s1.is_published==true && s2.is_published==true)
+        {
+    	    if(s1.sales>s2.sales)
+	            return 1;
+	        if(s1.sales<s2.sales)
+    	        return -1;
+        }
+        if(s1.is_published==false && !s2.is_published==false)
+        {
+            int k = (s1.name).compareTo(s2.name);
+    	    if(k<0)
+	            return 1;
+	        if(k>0)
+    	        return -1;
+        }
+        return 0;
+   }
+}*/
+

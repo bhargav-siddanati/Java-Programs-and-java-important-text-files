@@ -1,0 +1,99 @@
+Nested Try-Catch
+Java allows us to have nested try and catch blocks. While we usually try ways to avoid using this feature, some instances leave us with no other option.
+
+One such instance is when our clean-up code, i.e. the one which we execute on encountering an exception, can itself have further exceptions.
+
+Example:
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        a = 5;
+        try{
+             b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+        }
+        catch (ArithmeticException e){
+            int[] x = new int[]{0,1,2,3,4};
+            System.out.println("Please choose a number from the array [0,1,2,3,4]");
+            int c = scan.nextInt();
+            System.out.println(a + " divided by " + x[c] + " is "  + (a/x[c]));
+        }
+    }
+}
+Now, if b is 0, we end up in the catch block. However, if we give the value of c as 6, then we get the following output:
+
+Please choose a number from the array [0,1,2,3,4]
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: 6
+We got a new exception in our catch statement!
+
+Java allows us to put a try-catch block within this catch statement. So, it becomes:
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        a = 5;
+        Scanner scan = new Scanner(System.in);
+        try{
+             b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+        }
+        catch (ArithmeticException e){
+            int[] x = new int[]{0,1,2,3,4};
+            System.out.println("Please choose a number from the array [0,1,2,3,4]");
+            int c = scan.nextInt();
+            try{
+            System.out.println(a + " divided by " + x[c] + " is "  + (a/x[c]));
+            }
+            catch(Exception e2){
+                System.out.println("Choose a number between 0 and 4!");
+            }
+        }
+    }
+}
+And the output:
+
+Please choose a number from the array [0,1,2,3,4]
+Choose a number between 0 and 4!
+We can also nest a try & catch block in the try block.
+
+For example:
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        a = 5;
+        Scanner scan = new Scanner(System.in);
+        try{
+            try{
+             b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+            }
+            catch (ArithmeticException e){
+            int[] x = new int[]{0,1,2,3,4};
+            System.out.println("Please choose a number from the array [0,1,2,3,4]");
+            int c = scan.nextInt();
+             System.out.println(a + " divided by " + x[c] + " is "  + (a/x[c]));
+            }
+        }
+        catch(Exception e2){
+            System.out.println("Choose a number between 0 and 4!");
+        }
+    }
+}
+The output in this case:
+
+Please choose a number from the array [0,1,2,3,4]
+Choose a number between 0 and 4!
+And also, we can have more than one try catch nested. The usage really depends on your logic, so go through the examples thoroughly to understand which exception to use at what time.
+

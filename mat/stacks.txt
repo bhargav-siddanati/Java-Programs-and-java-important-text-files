@@ -1,0 +1,122 @@
+Stacks
+A stack is a data structure that is based on the Last In First Out Policy or LIFO Policy.
+
+In Stacks insert and delete only from one end: the top.
+
+Stack1
+
+The method for inserting an element is called push and the method to remove an element is called pop.
+
+Our Own Stack Class
+Keeping the properties of the Stack in mind, let us define our own Stack class:
+
+class Stack{
+	int[] data;
+    int capacity; 
+	int top;   
+}
+The data array shall store the data. The capacity integer is to know the maximum number of elements possible in the stack. The top integer keeps track of where our top is.
+
+Let’s define a constructor:
+
+class Stack{
+	int[] data;
+    int capacity; 
+	int top;   
+	
+	Stack(int capacity){
+        top = -1;
+        data = new int[capacity];
+    }
+}
+Here, we accept as parameter the capacity of the stack and create a new integer array of that size. Also, since the stack is empty, we initialize top with -1.
+
+Now, let us define the push and pop methods:
+
+class Stack{
+	int[] data;
+    int capacity; 
+	int top;   
+	
+	Stack(int capacity){
+        top = -1;
+        data = new int[capacity];
+    }
+    
+     public void push(int newData){
+        top++;
+        data[top] = newData;
+    }
+    
+    public int pop(){
+                int element = data[top];
+                top--;
+                return(element);
+        }
+}
+push: accepts as parameter an integer and inserts at the top of the array, after increasing top by 1
+pop: returns the topmost element and also decreases the value of top
+In this way, we have satisfied the vary basic properties of Stacks. Now, let’s go deeper into some more methods.
+
+Going Deeper in Stacks
+Let’s define a method called isFull - it is a boolean method that returns true if the Stack is full; otherwise it returns false.
+
+    public boolean isFull(){
+        if(top >= capacity-1)
+            return true;
+        else
+            return false;
+    }
+We use the top value to determine if the Stack is full. If top is greater than or equal to capacity-1, this means that pushing any more elements will make our array out of bounds - and thus our Stack must be full right now.
+
+Similarly, if the value of top is -1, it means there are no elements in the Stack and thus it must be empty. Thus, our isEmpty method is defined like this:
+
+public boolean isEmpty(){
+        if(top <= -1)
+            return true;
+        else
+            return false;
+    }
+Inserting in a Full Stack
+We have earlier defined our push method like this:
+
+public void push(int newData){
+        top++;
+        data[top] = newData;
+    }
+There is one problem in the above implementation - what if the stack is full?
+
+There is no standard way to deal with this. One way is that, in the main method, we call the isFull() method before pushing.
+
+The other way is to do so at the time of pushing:
+
+public void push(int newData){
+        if(isfull() != true)
+            {
+                top++;
+                data[top] = newData;
+            }
+    }
+The behavior depends on the scenario.
+
+Deleting from an Empty Stack
+Here, it is better to call the the isEmpty() method in the main method. This is because our pop method always returns something.
+
+Thus, in our main method:
+
+public static void main(String[] args){
+    Stack myStack = new Stack(10);
+    if(!myStack.isEmpty());
+        myStack.pop();
+}
+This way, we only pop if there are some elements to pop.
+
+Peek() method
+The peek method tells us the value of the element at the top of our stack.
+
+This is how we would write it:
+
+public int peek(){
+        return(data[top]);
+    }
+Again, here too we should ensure that the stack is not empty when we are calling the method. Otherwise, we can get an Array Out of Bounds Exception.

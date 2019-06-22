@@ -1,0 +1,71 @@
+Write a class called BST that represents a binary search tree of Strings. It should have the following methods:
+
+insert - accepts as parameter an integer and inserts it into the binary search tree
+preorder - prints the preorder traversal of the BST in one line
+
+The main class has already been written.
+
+===============================================
+
+class Node{
+    String data;
+    Node left;
+    Node right;
+
+    Node(String data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+class BST{
+Node root;
+BST(){
+root=null;
+}
+public void insert(String d) {
+      if (root == null) {
+         root = new Node(d);
+         
+      }
+      Node loc = root;
+      while (true) {
+         if (d.compareTo(loc.data) < 0)
+	 { 
+            if (loc.left != null)
+		 loc = loc.left;
+            else { 
+		loc.left = new Node(d); 
+		break;
+		 }
+         }
+         else if (d.compareTo(loc.data) > 0) 
+	{ 
+            if (loc.right != null) 
+		loc = loc.right;
+            else { 	
+		loc.right = new Node(d); 
+		break; 
+		}
+         }
+         else break; 
+      }
+   }
+public void preorder(){
+pr(root);
+System.out.println();
+}
+public void pr(Node a){
+if(a!=null){
+System.out.print(a.data+" ");
+pr(a.left);
+pr(a.right);
+}
+
+}
+
+}
+
+
+
+

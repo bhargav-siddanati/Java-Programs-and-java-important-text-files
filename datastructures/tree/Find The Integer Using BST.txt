@@ -1,0 +1,50 @@
+You are given the following Node and BST class:
+
+class Node{
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+class BST{
+    Node root;
+
+    BST(){
+        root = null;
+    }
+
+    public void insert(int data){
+        // inserts into the BST
+    }
+
+    // Write the search method here
+}
+Write a method search that takes as parameter an integer key and returns true if the key is present in the tree. Otherwise, it returns false. Only write the search method, the remaining classes have been written.
+
+Example:
+
+Insert: 7 8 9 12 -1
+Search(-9): false
+---
+Insert: 100 200 300 400 500 0 45 91
+Search(0): true 
+
+================================================================
+
+public boolean search(int k){
+Node c=root;
+while(c!=null){
+if(c.data==k)
+return true;
+else if(c.data<k)
+c=c.right;
+else if(c.data>k)
+c=c.left;
+}
+return false;
+}

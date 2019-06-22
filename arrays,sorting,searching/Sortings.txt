@@ -1,0 +1,85 @@
+Bubble sort
+
+-----------------------------
+
+public static void Met(int []a){
+int l=a.length,t;
+for(int i=0;i<=l-1;i++){
+for(int j=0;j<l-i-1;j++){
+if(a[j]>a[j+1])
+{t=a[j];
+a[j]=a[j+1];
+a[j+1]=t;
+}}for(int k=0;k<l;k++){
+System.out.print(a[k]+" ");
+}System.out.println();
+}
+}
+
+====================================================================
+
+Selection sort
+
+-----------------------
+
+public static void Met(int []a){
+int l=a.length,t;
+for(int i=0;i<l;i++){
+//int m=a[i];
+int min=i;
+for(int j=i+1;j<l;j++){
+if(a[j]<a[min])
+{min=j;
+//m=a[j];
+}}
+t=a[i];
+a[i]=a[min];
+a[min]=t;for(int k=0;k<l;k++){
+System.out.print(a[k]+" ");
+}System.out.println();
+}
+}
+
+======================================================================
+
+Insertion sort
+
+-------------------
+
+public static void Met(int []a){
+int key,j;
+for(int i=1;i<a.length;i++){
+key=a[i];
+j=i-1;
+while(j>=0&&a[j]>key){
+a[j+1]=a[j];
+j=j-1;
+}
+a[j+1]=key;
+for(int k=0;k<a.length;k++){
+System.out.print(a[k]+" ");}
+System.out.println();
+}
+}
+
+======================================================================
+
+2d sort
+-----------
+
+public static int[][] Met(int [][] a){
+for(int i=0;i<a.length;i++){
+for(int j=0;j<a[0].length;j++){
+for(int k=0;k<a.length;k++){
+for(int l=0;l<a[0].length;l++){
+if(a[k][l]>a[i][j]){
+int t=a[k][l];
+a[k][l]=a[i][j];
+a[i][j]=t;
+}
+}
+}
+}
+}
+return a;
+}

@@ -1,0 +1,51 @@
+Deleting from a BST
+We have seen how BSTs give us an advantage in many situations by allowing us to link more than one node together.
+
+However, this structure of the tree also means that we have more options and considerations when it comes to different operations.
+
+We have already seen this case with traversals. In deletion also, we have different cases.
+
+Case #1: Deleting a node with no children
+This is a straightforward case. Consider the follwing example:
+
+Tree
+
+We just need to make the left of 2 as null .
+
+Case #2: Deleting a node with 1 child
+Tree
+
+Here, we should connect 5 to 21. In caseswith only 1 child, the sub-tree gets promoted upwards.
+
+Tree
+Tree
+
+Case #3: Deleting a node with 2 children
+Let’s say we want to delete 12 in the following tree:
+
+Tree
+
+Here are the steps we follow:
+
+Find the minimum value in the right subtree
+Make our node’s value to the minimum value
+Remove the duplicate value
+Step 1:
+
+Find the minimum value in the right subtree
+
+Tree
+
+Step 2:
+
+Make our node’s value to the minimum value
+
+Tree
+
+Step 3:
+
+Remove the duplicate value
+
+Tree
+
+The best way to go about with the deletion code is by using recursion. Try it out by yourself!

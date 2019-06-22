@@ -1,0 +1,32 @@
+import java.util.*;
+public class P3{
+   
+    public static void sort(char c[],ArrayList<String> al){
+       int i=1;
+        char temp=c[i];
+        c[i]=c[i+1];
+        c[i+1]=temp;
+        al.add(String.valueOf(c));
+    }
+    public static void main(String[]args){
+        ArrayList<String> al=new ArrayList<String>();
+        String s="acb";
+        char c[]=s.toCharArray();
+
+        al.add(String.valueOf(c));
+
+        for(int i=0;i<s.length();i++){
+    
+            sort(c,al);
+           int z=0;
+           if(i!=s.length()-1){
+                char temp=c[z];
+                c[z]=c[z+1];
+                c[z+1]=temp;
+                al.add(String.valueOf(c));
+           }
+               
+        }
+        System.out.println(al);
+    }
+}

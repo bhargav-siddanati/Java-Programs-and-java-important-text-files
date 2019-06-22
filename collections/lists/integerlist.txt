@@ -1,0 +1,42 @@
+Write a class called Solution that has a LinkedList of Integer type called myList. Your Solution should have the following methods:
+
+insert() - accepts as parameter a Integer and inserts it at the end of myList. Doesn’t return anything.
+delete() - accepts as parameter a Integer and removes it from myList. Doesn’t return anything.
+size() - returns an integer which tells us the size of mylist
+print() - prints the elements of myList in a single line. Doesn’t return anything.
+Write only the Solution class. The main class has been written.
+
+=========================================================
+
+import java.util.LinkedList;
+class Solution{
+LinkedList<Integer> myList=new LinkedList<Integer>();
+
+public void insert(int my)
+{
+myList.add(my);
+}
+
+public void delete(int my)
+{
+myList.remove(myList.indexOf(my));
+}
+
+public int size()
+{
+return (myList.size());
+}
+
+public void print()
+{
+for(int my:myList){
+System.out.print(my+" ");
+}
+System.out.println();
+}
+
+}
+
+
+
+

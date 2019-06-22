@@ -1,0 +1,41 @@
+Mr. Zaza is playing around with some name pairs. Due to his old age, he is getting forgetful - he forgets if he has repeated any pairs or not.
+
+Given a 2D array of strings, with each row containing a name pair, you have to print the number of unique name pairs up till that point.
+
+Write a static method Met that accepts as parameter a 2D array of Strings and prints the required numbers.
+
+Example Input:
+Alex Ferguson
+CV Raman
+Sachin Tendulkar
+Alex Ferguson
+Indra Nooyi
+Output:
+1
+2
+3
+3
+4
+
+Only write Met, the main class has already been written.
+
+==============================================================
+
+public static void Met(String a[][]){
+int o=0,p=0,q=0;
+for(int i=0;i<a.length;i++){
+for(int j=0;j<a[0].length;j++){
+for(int k=i+1;k<a.length;k++){
+if(k==p&&j==q||k==p&&j==q+1)
+System.out.println(o);
+if(a[i][j].equals(a[k][j])&&a[i][j+1].equals(a[k][j+1]))
+{
+p=k;
+q=j;
+}
+else
+System.out.println(o++);
+}
+}
+}
+}

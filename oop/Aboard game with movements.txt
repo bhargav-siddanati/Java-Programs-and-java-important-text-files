@@ -1,0 +1,79 @@
+Using the same Game class as the previous question, we will add some movement to our player.
+
+In addition to everything in the previous question, you need to also define the following methods:
+
+moveUp - it moves the player up by one position, by updating the pos_row & pos_col and also redrawing the board. Does not print or return anything
+moveDown - it moves the player down by one position, by updating the pos_row & pos_col and also redrawing the board. Does not print or return anything
+moveLeft - it moves the player left by one position, by updating the pos_row & pos_col and also redrawing the board. Does not print or return anything
+moveRight - it moves the player right by one position, by updating the pos_row & pos_col and also redrawing the board. Does not print or return anything
+If any of the moves are not possible, it does not do anything.
+
+Only write the Game class, assume the Main class has already been written.
+
+Example Input:
+3 2 2
+moveUp()
+moveUp()
+moveLeft()
+Output:
+0 0 0
+0 0 0
+0 0 1
+
+0 0 0
+0 0 1
+0 0 0
+
+0 0 1
+0 0 0
+0 0 0
+
+0 1 0
+0 0 0
+0 0 0
+
+=========================================================================
+
+class Game{
+int pos_row;
+int pos_col;
+int[][] board;
+Game(int a,int b,int c){
+board=new int[a][a];
+this.pos_row=b;
+this.pos_col=c;
+}
+
+public void moveUp(){
+if(pos_row>0)
+pos_row--;
+}
+public void moveDown(){
+if(pos_row<board.length-1)
+pos_row++;
+}
+public void moveLeft(){
+if(pos_col>0)
+pos_col--;
+}
+public void moveRight(){
+if(pos_col<board.length-1)
+pos_col++;
+}
+
+public void draw(){
+for(int i=0;i<board.length;i++){
+for(int j=0;j<board[0].length;j++){
+if(i==pos_row&&j==pos_col){
+System.out.print(1+" ");}
+else
+System.out.print(0+" ");
+}System.out.println();
+}
+}
+
+}
+
+
+
+

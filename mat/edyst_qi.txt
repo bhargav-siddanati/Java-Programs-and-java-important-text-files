@@ -1,0 +1,51 @@
+public static char[][] Met(char a[][]){
+if (s(a,0)!=false){
+return a;
+}
+return a;
+}
+
+public static boolean q(char b[][], int r, int c) 
+{   int N=b.length;
+int i, j; 
+          
+for (i = 0; i < c; i++) 
+if (b[r][i] == '#') 
+return false; 
+   
+for (i=r, j=c; i>=0 && j>=0; i--, j--) 
+if (b[i][j] == '#') 
+return false; 
+         
+for (i=r, j=c; j>=0 && i<N; i++, j--) 
+if (b[i][j] == '#') 
+return false; 
+  
+return true; 
+} 
+  
+    
+public static  boolean s(char b[][], int c) 
+{  int N=b.length;
+       
+if (c>= N) 
+return true; 
+  
+        
+for (int i=0; i<N; i++) 
+{ 
+            
+if (q(b,i,c)) 
+{ 
+                
+b[i][c] = '#'; 
+                
+if (s(b,c+1) == true) 
+return true; 
+           
+b[i][c] = '*'; 
+} 
+} 
+          
+return false; 
+} 

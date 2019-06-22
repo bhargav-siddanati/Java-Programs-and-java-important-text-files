@@ -1,0 +1,72 @@
+You are in-charge of designing the Adventure Land game.
+
+You have to write 2 classes: the Player class and the Leaderboard class
+
+Player has the following data:
+
+a private String for name
+a private integer for speed
+a private integer for health
+Also, it has a parameterized constructor for name, speed and health (name is first parameter, speed is second and health is third)
+
+Leaderboard has the following:
+Data
+
+a LinkedList of Player objects called myList
+Methods
+
+insert: accepts a player object and inserts it into myList
+print: prints the list of Player objects in increasing order of their health (check example)
+Write only the Player and Leaderboard class. The Main class has already been written.
+
+Example Input:
+sora 100 500
+mickey 50 3000
+jolly 75 5500
+goofy 55 700
+minnie 150 5000
+Output:
+sora, 100, 500
+goofy, 55, 700
+mickey, 50, 3000
+minnie, 150, 5000
+jolly, 75, 5500
+
+===============================================================
+
+import java.util.LinkedList;
+import java.util.Collections;
+ class Player implements Comparable<Player>{
+ String name;
+ int speed;
+ int health;
+Player(String name,int speed,int health){
+this.name=name;
+this.speed=speed;
+this.health=health;
+}
+public int compareTo (Player p){
+if(this.health>p.health)
+return 1;
+if(this.health==p.health)
+return 0;
+if(this.health<p.health)
+return -1;
+return 0;
+}
+}
+
+class Leaderboard{
+LinkedList<Player>l=new LinkedList<Player> ();
+public void insert(Player p){
+l.add(p);
+Collections.sort(l);
+}
+
+
+public void print(){
+for(Player p:l){
+System.out.println(p.name+", "+p.speed+", "+p.health);
+}
+}
+}

@@ -1,0 +1,91 @@
+class M{
+    int key[];
+    String value[];
+    M(){
+        key=new int[1001];
+        value=new String[1001];
+    }
+    
+    public void put1(int k1,String v1)
+    {
+       
+        for(int i=1;i<key.length;i++)
+        {
+            if(k1==key[i]){
+                /*if(v1.equals(value[i]))
+                {
+                    System.out.println("already key and value Existed");
+                    break;
+                }
+                else
+                {*/
+                    //if(value[i+1].equals(null))
+                    value[i]=v1;//Updated the value
+                    break;
+               // }
+            }
+            
+            else{
+                key[i]=i;             //insertion
+                value[i]=v1;
+                break;
+            }
+       }
+       
+       
+    }
+    public void get1(int k1){
+        int c=0;
+       for(int i=1;i<key.length;i++){
+          /* if(key[i]==0){
+               break;
+           }*/
+           if(key[i]==k1){
+               System.out.print(key[i]+" "+value[i]);  //getting the value and key
+               c=1;
+               break;
+           }
+       }
+       if(c==0)
+        System.out.println("not existed");
+    }
+    public void re(int k1){
+       
+        for(int i=1;i<key.length;i++){
+            if(key[i]==k1){
+               key[i]=0;
+               value[i]=null; 
+               break;
+            }
+        }
+        
+    }
+
+    public void print(int k1){
+        for(int i=1;i<key.length;i++)
+        {
+            if(key[i]==k1)
+                System.out.print(value[i]+"   ");
+            
+        }System.out.println();
+    }
+
+}
+public class Map{
+    public static void main(String[]args){
+        M m=new M();
+        m.put1(1,"hello");
+        m.print(1);
+        m.put1(22,"no");
+        m.print(22);
+        m.get1(1);
+        //m.put1(2,"Hello");
+        //m.put1(3,"jai");
+       // m.put1(4,"pavan");
+        //m.print();
+        //m.get1(0);
+        //m.re(3);
+        //m.print();
+
+    }
+}

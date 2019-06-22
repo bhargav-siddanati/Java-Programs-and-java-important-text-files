@@ -1,0 +1,63 @@
+You are given the following class called MyQueue.
+
+class MyQueue{
+    private String[] data;
+    private int capacity, front, rear;
+
+    MyQueue(int capacity){
+        this.capacity = capacity;
+        data = new String[data];
+    }
+
+    public void enqueue(String input){
+        // enqueues the input string. Does nothing if the queue is full
+    }
+
+    public String dequeue(){
+        //dequeues from the queue. Returns null if the queue is empty
+    }
+
+    public boolean isempty(){
+        // returns true if the queue is empty. Otherwise returns false
+    }
+
+}
+Write a class called Solution. It should have a method called reverseQueueforK that takes as parameter a MyQueue object and an integer k and returns a MyQueue object with the first k elements of the queue reversed.
+
+Only write the Solution class. The MyQueue and Main class have already been written.
+
+Hint: Use a stack
+Note: maximum size of the queue is 1000
+
+Example Input:
+Hello this is a string queue
+3
+Output:
+is this Hello a string queue
+
+=======================================================================
+
+class Solution{
+String t[]=new String[100];
+String t1[]=new String[100];
+int front=-1,rear=-1;
+
+MyQueue reverseQueueForK(MyQueue q,int k){
+
+for(int i=0;i<k;i++){
+t[i]=q.dequeue();
+}
+
+int j=0;
+while(!q.isEmpty()){
+t1[j]=q.dequeue();
+j++;
+}
+for(int i=k-1;i>=0;i--){
+q.enqueue(t[i]);}
+for(int i=0;i<j;i++){
+q.enqueue(t1[i]);}
+return q;
+}
+
+}

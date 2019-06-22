@@ -1,0 +1,75 @@
+There are certain World Tax Standards and we have written a class for it:
+
+class WorldTax{
+    public double salesTax(int amount){
+        ...
+    }
+
+    public double propertyTax(int amount){
+        ...
+    }
+
+    public double incomeTax(int amount){
+        ...
+    }
+}
+Each of the above methods takes as parameter an integer (amount) and returns the tax applicable on that amount.
+
+However, certain countries have their own standards
+
+.	Sales Tax	Property Tax	Income Tax
+India	18%	20 %	Same as World
+China	10%	Same as World	Same as World
+Japan	5%	5%	5%
+Canada	25%	Same as World	25%
+As per the information, write the following classes: IndiaTax, ChinaTax, JapanTax, CanadaTax such that they inherit from WorldTax. The methods should return the applicable tax.
+
+The WorldTax and Main class have been defined. You have to define the other classes.
+
+==========================================================================
+
+class IndiaTax extends WorldTax{
+    public double salesTax(int amount){
+        return 0.18*amount;
+    }
+
+    public double propertyTax(int amount){
+        return 0.2*amount;
+    }
+
+   
+}
+class ChinaTax extends WorldTax{
+    public double salesTax(int amount){
+        return 0.1*amount;
+    }
+
+    }
+class JapanTax extends WorldTax{
+    public double salesTax(int amount){
+        return 0.05*amount;
+    }
+
+    public double propertyTax(int amount){
+        return 0.05*amount;
+    }
+
+    public double incomeTax(int amount){
+        return 0.05*amount;
+    }
+}
+class CanadaTax extends WorldTax{
+    public double salesTax(int amount){
+        return 0.25*amount;
+    }
+
+    
+
+    public double incomeTax(int amount){
+        return 0.25*amount;
+    }
+}
+
+
+
+

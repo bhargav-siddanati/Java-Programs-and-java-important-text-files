@@ -1,0 +1,46 @@
+Given the following node and BST classes:
+
+class Node{
+    int data;
+    Node left;
+    Node right;
+
+    Node(int data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+class BST{
+    Node root;
+
+    BST(){
+        root = null;
+    }
+
+    public void insert(int data){
+        // inserts into the BST
+    }
+
+    //Write the preorder traversal method here
+}
+Write a method preorder which prints the pre-order traversal of the BST. Write only the preorder method. The other classes have already been written.
+
+Example:
+Insert: 7 4 12 2 6 9 19 3 5 8 11 15 20
+Output: 7 4 2 3 6 5 12 9 8 11 19 15 20
+
+===============================================================
+
+public void preorder(){
+pr(root);
+System.out.println();
+}
+public void pr(Node a){
+if(a!=null){
+System.out.print(a.data+" ");
+pr(a.left);
+pr(a.right);
+}
+
+}

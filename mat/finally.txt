@@ -1,0 +1,65 @@
+The finally block
+The finally block is placed after all the catch blocks. The finally block is optional.
+
+What does it do? The finally block always executes - no matter which exception occurs or does not occur.
+
+Given a snippet like this:
+
+    try{
+        ...
+    }
+    catch(exception1 e){
+    }
+    catch(exception2 e){
+    }
+    catch(exception3 e){
+    }
+    finally{
+    }
+Now, if an exception occurs, we directly jump to the concerned exception. And if an exception does not occur, then our try block is executed fully.
+
+In both these cases, the finally block is always executed!
+
+Let’s use our previous example, but this time with a finally block:
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class Main{
+    public static void main(String[] args){
+        int a,b;
+        Scanner scan = new Scanner(System.in);
+        try{
+            a = 5; b = scan.nextInt();
+            System.out.println(a + " divided by " + b + " is "  + (a/b));
+        }
+        catch (ArithmeticException e){
+            System.out.println("Please enter a non-zero number!");
+        }
+        catch (InputMismatchException e){
+            System.out.println("Please enter an integer!");
+        }
+        finally{
+            System.out.println("Arithmetic is complicated!");
+        }
+    }
+}
+Now, let’s tryout different inputs for b.
+
+When b is 1, the output is:
+
+5 divided by 1 is 5
+Arithmetic is complicated!
+When b is 0, the output is:
+
+Please enter a non-zero number!
+Arithmetic is complicated!
+When we try to make b as hello, the output is:
+
+Please enter an integer!
+Arithmetic is complicated!
+As you can see, the finally block always gets executed, no matter which route we take.
+
+Putting a finally block is a good practice, even if you’re not expecting an exception.
+
+Go ahead and try out some questions, to catch the concept and finally understand a crucial part of Java.

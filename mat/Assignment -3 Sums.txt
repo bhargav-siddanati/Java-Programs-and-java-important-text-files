@@ -1,0 +1,86 @@
+class Hotel
+{
+String city;
+int bill;
+Room[] inventory;
+Room obj;
+int anx[]=new int[3];
+Hotel(String c,int b,Room[] o)
+{
+city=c;
+bill=b;
+inventory=o;
+}
+
+void top3_rooms()
+{
+int i,j,hcap,ind=0;
+String s="";
+for(i=0;i<3;i++)
+{
+hcap=inventory[i].capacity;
+s=inventory[i].name;
+anx[i]=inventory[i].price;
+//System.out.println("...."+hcap+".......");
+for(j=i+1;j<inventory.length;j++)
+{
+if(hcap<inventory[j].capacity)
+{
+ind=j;
+hcap=inventory[j].capacity;
+s=inventory[j].name;
+anx[i]=inventory[j].price;
+}
+}
+obj=inventory[ind];
+inventory[ind]=inventory[i];
+inventory[i]=obj;
+System.out.println(s);
+}
+//System.out.println();
+}
+
+
+void updateBill()
+{
+bill=(anx[0]+anx[1]+anx[2]);
+}
+
+
+void cheapest_room()
+{
+int i,n=inventory[0].price,ind=0;
+for(i=0;i<inventory.length;i++)
+if(n>inventory[i].price)
+{
+n=inventory[i].price;
+ind=i;
+}
+System.out.println(inventory[ind].name);
+}
+
+}
+
+
+
+
+
+class WordMagic
+{
+String candidate;
+
+WordMagic(String a)
+{
+this.candidate=a;
+}
+
+public boolean play()
+{
+if(candidate.contains("*edy"))
+return false;
+else if(candidate.contains("edy"))
+return true;
+else
+return false;
+}
+}

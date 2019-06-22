@@ -1,0 +1,52 @@
+We have defined the Numbers class like this:
+
+class Numbers{
+    int num;
+    boolean prime, odd, even;
+}
+Write a Method Met that accepts as parameter an array of integers called intArray. In your method, you should create a new array called numbersArr which is an array of objects of Numbers class. The objects are defined such that:
+
+numbersArr[i].num is equal to intArray[i]
+the object’s prime value is true if the corresponding intArray value is prime. Otherwise, it is false
+the object’s odd value is true if the corresponding intArray value is odd. Otherwise, it is false
+the object’s even value is true if the corresponding intArray value is even. Otherwise, it is false
+You have to return the numbersArray array.
+
+Example Input:
+2 3 7 9 14 26
+Output:
+2 true false true
+3 true true false
+7 true true false
+9 false true false
+14 false false true
+26 false false true
+
+==================================================================
+
+public static Numbers[] Met(int []intArray){
+Numbers []numbersArr=new Numbers[intArray.length];
+for(int i=0;i<intArray.length;i++){
+numbersArr[i]=new Numbers();
+numbersArr[i].num=intArray[i];
+if(numbersArr[i].num%2==0){
+numbersArr[i].even=true;
+numbersArr[i].odd=false;
+}
+else{
+numbersArr[i].odd=true;
+numbersArr[i].even=false;
+}
+int c=0;if(intArray[i]==1){c++;}
+else{
+for(int j=2;j<intArray[i];j++){
+if(intArray[i]%j==0){
+c++;}
+}}
+if(c==0){
+numbersArr[i].prime=true;
+}
+else{numbersArr[i].prime=false;}
+}
+return numbersArr;
+}

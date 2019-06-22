@@ -1,0 +1,50 @@
+Write a class MyReflect that has a String type called data. The class should have a parameterized constructor that accepts the value for data.
+
+Write a method, largestMirror that looks for a reflection at the start at end of the string. That is, some characters appearing at the start of the array, appear at the end of the array in reverse order. You have to return the largest substring that follows this pattern.
+
+If there is no such pattern, then return an empty string.
+
+Example Input:
+abcdefkhmnfcba
+Output:
+cba
+Example Input:
+Java is awesome
+Output:
+
+=================================================
+
+class MyReflect{
+String data;
+MyReflect(String data){
+this.data=data;
+}
+public String largestMirror(){
+int i=0,j=data.length()-1;
+if(data.length()==1||data.length()==2){
+return data;
+}
+else{
+while(i<j){
+if(data.charAt(i)==data.charAt(j)){
+i++;j--;
+}
+else{break;}
+}
+if(i==0){
+this.data=" ";
+}
+else if(i==j||data.length()==2){
+data=data;
+}else{
+
+data=data.substring(0,i);
+}
+return data;}
+}
+}
+
+
+
+
+

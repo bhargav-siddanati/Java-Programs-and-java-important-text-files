@@ -1,0 +1,48 @@
+Consider a BST whose data is of the type String. It has the following classes:
+
+class Node{
+    String data;
+    Node left;
+    Node right;
+
+    Node(String data){
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+class BST{
+    Node root;
+
+    BST(){
+        root = null;
+    }
+
+    public void insert(String data){
+        // inserts into the BST
+    }
+
+    // Write the search method here
+}
+Here, the BST maintains an alphabetically sorted order.
+
+Write a method search that takes as parameter a String key and returns true if the key is present in the tree. Otherwise, it returns false. Only write the search method, the remaining classes have been written.
+
+====================================================================
+
+public boolean search(String k){
+Node c=root;
+while(c!=null){
+if(k.equals(c.data))
+return true;
+else if(k.compareTo(c.data)<=0)
+c=c.left;
+else if(k.compareTo(c.data)>=0)
+c=c.right;
+}
+return false;
+}
+
+
+
+

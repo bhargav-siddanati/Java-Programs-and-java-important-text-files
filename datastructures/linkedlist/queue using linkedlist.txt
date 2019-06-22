@@ -1,0 +1,115 @@
+You are given the following Node class:
+
+class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+Implement a queue data structure using linked lists. Write a class called MyQueueLinkedList. It should have the following data:
+
+A Node reference called front
+A Node reference called rear
+And the following methods:
+
+insert: accepts a Node object and insets it into the queue. Does not return anything
+delete: returns and removes the Node object at the front of the queue. Returns null if the queue is empty
+isEmpty(): returns true if the queue is empty. Otherwise, return false
+print: prints the contents of the queue, from front to rear. Print in a single line.
+
+=================================================================
+
+class MyQueueLinkedList{
+Node first;
+
+MyQueueLinkedList(){
+first=null;
+}
+public void insert(Node rear){
+if(first==null)
+first=rear;
+else{
+Node n=first;
+while(n.next!=null)
+{n=n.next;
+}n.next=rear;
+}
+}
+
+public Node delete(){
+if(!isEmpty()){
+Node n=first;
+first=first.next;
+return n;
+}
+else 
+return null;
+}
+
+public boolean isEmpty(){
+if(first==null)
+return true;
+else
+return false;
+}
+
+public void print(){
+if(!isEmpty()){
+Node n=first;
+while(n.next!=null){
+System.out.print(n.data+" ");
+n=n.next;
+}System.out.print(n.data+" ");
+
+}System.out.println();
+}
+
+}
+/*class MyQueueLinkedList{
+Node first;
+MyQueueLinkedList(){
+first=null;
+}
+public void insert(Node rear){
+if(first==null){
+first=rear;
+}
+else{
+Node temp=first;
+while(temp.next!=null){
+temp=temp.next;
+}
+temp.next=rear;
+}
+}
+public Node delete(){
+if(!isEmpty()){
+Node front=first;
+first=first.next;
+return front;
+}
+else{
+return null;}
+}
+public boolean isEmpty(){
+if(first==null){
+return true;
+}
+else
+return false;
+}
+public void print(){
+if(!isEmpty()){
+Node temp=first;
+while(temp.next!=null){
+System.out.print(temp.data+" ");
+temp=temp.next;
+}
+System.out.print(temp.data+" ");
+}
+System.out.println();
+}
+}*/

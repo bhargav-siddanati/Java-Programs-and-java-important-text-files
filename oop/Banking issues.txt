@@ -1,0 +1,70 @@
+You are given a class called Bank:
+
+class Bank{
+    int totalBalance;
+    int totalCustomers;
+    String data;
+}
+You have to write 3 classes that inherit from Bank: RBI, WorldBank, UniversalBank. Each of these classes should have a withdrawal method.
+
+RBI
+Class name: RBI
+Maximum Withdrawal: 100000
+withdrawal method: should accept as parameter an integer and deducts it from the totalBalance. Should follow the conditions:
+
+Withdrawal amount has to be multiple of 500. If not, print Invalid and don’t deduct the amount
+Withdrawal amount has to be less than the Maximum withdrawal amount. If not, print Invalid and don’t deduct the amount
+Otherwise, print the new balance and deduct the amount from totalBalance
+WorldBank
+Class name: WorldBank
+Maximum Withdrawal: 1000000
+withdrawal method: should accept as parameter an integer and deducts it from the totalBalance. Should follow the conditions:
+
+Withdrawal amount has to be multiple of 1500. If not, print Invalid and don’t deduct the amount
+Withdrawal amount has to be less than or equal to the Maximum withdrawal amount. If not, print Invalid and don’t deduct the amount
+Otherwise, print the new balance and deduct the amount from totalBalance
+UniversalBank
+Class name: UniversalBank
+Maximum Withdrawal: 50000
+withdrawal method: should accept as parameter an integer and deducts it from the totalBalance. Should follow the conditions:
+
+Withdrawal amount has to be multiple of 250 and above 10000. If not, print Invalid and don’t deduct the amount
+Withdrawal amount has to be less than or equal to the Maximum withdrawal amount. If not, print Invalid and don’t deduct the amount
+Otherwise, print the new balance and deduct the amount from totalBalance
+Tha Bank and Main class have already been written. You have to write the other classes. Use the System.out.println() statement to print.
+
+===========================================================================
+
+class RBI extends Bank{
+int max=100000;
+public void withdrawal(int a){
+if(a%500==0){
+if(a<max){
+totalBalance-=a;}
+System.out.println(totalBalance);}
+else
+System.out.println("Invalid");
+}}
+
+class WorldBank extends Bank{
+int max=1000000;
+public void withdrawal(int a){
+if(a%1500==0){
+if(a<=max){
+totalBalance-=a;}
+System.out.println(totalBalance);}
+else
+System.out.println("Invalid");
+}}
+
+class UniversalBank extends Bank{
+int max=50000;
+public void withdrawal(int a){
+if(a%250==0&&a>10000){
+if(a<max){
+totalBalance-=a;}
+System.out.println(totalBalance);}
+else
+System.out.println("Invalid");
+}
+}

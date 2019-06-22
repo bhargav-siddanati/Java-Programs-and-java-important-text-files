@@ -1,0 +1,79 @@
+Write a class called CircularQueue. It should have the following:
+
+a String array called data. Use this array to implement a circular queue
+an integer called capacity which tells us the maximum size of the queue array
+Write a parameterized constructor that accepts the value for capacity.
+
+The CircularQueue class should have the following methods:
+
+enqueue: accepts as parameter a String and inserts it into the queue. Returns nothing
+dequeue: deletes and returns the topmost element from the queue. If the queue is empty, return null.
+peek: prints element at the front of the queue. If the queue is empty, print null.
+isEmpty(): returns true if the queue is empty. Otherwise returns false
+Only write the CircularQueue class. The Main class has already been written.
+
+================================================================
+
+class CircularQueue{
+String data[];
+int capacity;
+int front,rear;
+
+CircularQueue(int capacity){
+this.capacity=capacity;
+data=new String[capacity];
+front=-1;
+rear=-1;
+}
+
+public void enqueue(String s){
+if(!Full()){
+if(front==-1&&rear==-1){
+front=0;
+rear=0;
+}
+else if(rear==capacity-1){
+rear=0;
+}
+else{
+rear++;
+}
+data[rear]=s;
+}
+}
+
+public String dequeue(){
+if(!isEmpty()){
+String s=data[front];
+if(front==capacity-1)
+front=0;
+else 
+front++;
+if(front==rear+1){
+front=-1;rear=-1;
+}
+return s;
+}
+else
+return null;
+}
+public boolean isEmpty(){
+if(front==-1)
+return true;
+else
+return false;
+}
+public String peek(){
+if(isEmpty())
+return null;
+else
+return data[front];
+}
+public boolean Full(){
+if(front==0&&rear==capacity-1)
+return true;
+else if(rear==front-1)
+return true;
+else
+return false;}
+}

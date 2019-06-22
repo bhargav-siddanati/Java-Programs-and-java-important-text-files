@@ -1,0 +1,145 @@
+Chat (13 Online)
+mounika sweety
+Visali Vasireddy
+chandana vakapalli
+Raghavendrarises@...
+Nookaratnam Peruri
+Mounika Sabbavarapu
+Siva jyothy
+hyma gabu
+G Gayatri
+Rama vasanthi
+Reddi jyothi
+srinija Rayaprolu
+NAGA SAI RAJ VINN...
+Object Oriented Programming
+3
+Rank
+All topics
+Estimated End Date: 30/03/19
+Weekly Tasks
+View Monthly Tasks
+30th-January 2019
+You still have 13 hours 37 minutes left in the day. Let’s write some code :)
+X
+Abstract Classes
+We use abstract classes to where we have many classes and each class must follow certain rules.
+
+Abstract classes cannot have object of their own. We can only inherit from abstract classes.
+
+Let’s understand the need for abstract classes.
+
+We want to design a game, which has 3 different police characters. We know that each police character must have an attack() method.
+
+The way each method is implemented is not common. Each class may implement its own way. However, there must be a method called attack().
+
+The above situation can be very well designed using an abstract class. An abstract class is one which itself can’t have any objects, but each of it’s subclasses must have a definition for it’s abstract methods.
+
+Here, we shall define the attack() method as abstract.
+
+This is how we want our class diagram to be:
+
+Police Class Diagram
+
+This is how we shall define it in Java:
+
+abstract class Police{
+    public abstract int attack(int level);
+}
+The attack method returns the amount of damage caused by the character, depending on the level.
+
+Now, when we define the different characters:
+
+    class Constable extends Police{
+        public int attack(int level){
+        return (5*level);
+        }
+    }
+
+    class Officer extends Police{
+        public int attack(int level){
+        return (7*level);
+        }
+    }
+
+    class Lieutenant extends Police{
+        public int attack(int level){
+        return (9*level);
+        }
+    }
+If we don’t define all the required abstract methods, then we will get an error.
+
+Also, an abstract class can have non-abstract method. These will work just as how a normal parent class method would work.
+
+Example:
+
+abstract class Police{
+    public abstract int attack(int level); //abstract method
+
+    public void printDuty(){ //concrete method
+        System.out.println("Safety of citizens");
+    }
+}
+
+    class Constable extends Police{
+        public int attack(int level){
+        return (5*level);
+        }
+    }
+
+    class Officer extends Police{
+        public int attack(int level){
+        return (7*level);
+        }
+    }
+
+    class Lieutenant extends Police{
+        public int attack(int level){
+        return (9*level);
+        }
+    }
+
+Then, in the main method:
+
+public class Main{
+
+     public static void main(String []args){
+        Lieutenant L1 = new Lieutenant();
+        L1.printDuty();
+    }
+}
+Output:
+
+Safety of citizens
+As seen above, we inherit the non-abstract methods as we do with concrete classes.
+
+Abstract classes are useful when you are defining a common standard and want to guarantee the presence of some methods. You don’t want to interfere in what goes inside the methods, but you want the methods to be there for sure.
+
+Other possibilities of Abstract Classes
+The above use case is the main use case of Abstract Classes. However, there is much more possible with abstract classes, and you will definitely be quizzed about this by interviewers. So, make sure you understand all the rules properly!
+
+Abstract Class can have constructors
+
+Just like in normal inheritance, the constructor of the superclass will be called first and then the constructor of the child classes
+
+Abstract class without any abstract methods can be created
+
+In Java, we can have an abstract class without any abstract method. This allows us to create classes that cannot be instantiated, but can only be inherited.
+
+Abstract classes can have final method
+
+These methods are accessible from the subclasses, but cannot be overridden. An abstract method cannot be final.
+
+We can inherit only one abstract class at a time
+
+Java does not allow inheriting from multiple classes, also called multiple inheritance. To have multiple inheritance, we need to use interfaces.
+
+We cannot have an abstract method in a final class
+
+final classes cannot be inherited and abstract classes are meant only for inheritance!
+
+Check out some examples of abstract classes to better understand this concept!
+
+
+Post Your Question
+?

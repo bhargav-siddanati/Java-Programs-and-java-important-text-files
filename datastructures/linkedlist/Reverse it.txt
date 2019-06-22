@@ -1,0 +1,62 @@
+You are given the following Node and MyLinkedList class:
+
+class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+
+class MyLinkedList{
+    Node first;
+
+    public void insert (Node input) {
+        //inserts Node at end of linked list
+    }
+
+    public void print(){
+        //prints the given linked list
+    }
+
+
+    // write the reverseLinkedList method here
+}
+Write the method called reverseLinkedList. This method reverses the current linked list.
+
+Example Input:
+1 5 7 4 3
+Output:
+3 4 7 5 1
+
+Write only the reverseLinkedList method. Assume that the other methods and Main class have already been written.
+
+===========================================================
+
+public void reverseLinkedList(){
+Node t=first;
+int j=1;
+while(t.next!=null){
+j++;
+t=t.next;
+}
+
+t=first;
+int te[]=new int[j];
+int k=0;
+while(t.next!=null){
+te[k]=t.data;
+k++;
+t=t.next;
+}
+te[k]=t.data;
+t=first;
+while(t.next!=null){
+t.data=te[k];
+k--;
+t=t.next;
+}
+t.data=te[k];
+}
